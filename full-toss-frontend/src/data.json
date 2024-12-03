@@ -1,0 +1,146 @@
+[
+  {
+    "id": 1,
+    "title": "CSK Jersey",
+    "description": "Official Chennai Super Kings jersey for the IPL 2024 season. Made with breathable fabric and team logos.",
+    "price": "1299",
+    "mrp": "1799",
+    "imageURL": "https://example.com/csk-jersey.png"
+  },
+  {
+    "id": 2,
+    "title": "MI Cap",
+    "description": "Team-branded Mumbai Indians cap, perfect for showing your support for the IPL 2024 season.",
+    "price": "699",
+    "mrp": "999",
+    "imageURL": "https://example.com/mi-cap.png"
+  },
+  {
+    "id": 3,
+    "title": "RCB Bat",
+    "description": "Official RCB cricket bat autographed by star players. A collector's item for true fans of Royal Challengers Bangalore.",
+    "price": "8999",
+    "mrp": "12000",
+    "imageURL": "https://example.com/rcb-bat.png"
+  },
+  {
+    "id": 4,
+    "title": "IPL Cards",
+    "description": "Complete set of IPL trading cards featuring all the players from the 2024 season. Limited edition.",
+    "price": "499",
+    "mrp": "799",
+    "imageURL": "https://example.com/ipl-cards.png"
+  },
+  {
+    "id": 5,
+    "title": "DC T-shirt",
+    "description": "Comfortable and stylish Delhi Capitals official t-shirt with team logo and IPL 2024 branding.",
+    "price": "799",
+    "mrp": "1099",
+    "imageURL": "https://example.com/dc-tshirt.png"
+  },
+  {
+    "id": 6,
+    "title": "KKR Poster",
+    "description": "High-quality printed poster featuring the Kolkata Knight Riders team. Perfect for your fan cave or bedroom.",
+    "price": "299",
+    "mrp": "499",
+    "imageURL": "https://example.com/kkr-poster.png"
+  },
+  {
+    "id": 7,
+    "title": "IPL Ball",
+    "description": "High-quality cricket ball used in the IPL 2024 matches. Officially branded for professional play.",
+    "price": "699",
+    "mrp": "999",
+    "imageURL": "https://example.com/ipl-ball.png"
+  },
+  {
+    "id": 8,
+    "title": "RCB Hoodie",
+    "description": "Warm and comfortable hoodie with RCB branding. Perfect for chilly evenings during match time.",
+    "price": "1499",
+    "mrp": "1999",
+    "imageURL": "https://example.com/rcb-hoodie.png"
+  },
+  {
+    "id": 9,
+    "title": "MI Backpack",
+    "description": "Official Mumbai Indians team backpack with a spacious compartment for all your gear and accessories.",
+    "price": "1299",
+    "mrp": "1599",
+    "imageURL": "https://example.com/mi-backpack.png"
+  },
+  {
+    "id": 10,
+    "title": "RCB Mug",
+    "description": "Official Royal Challengers Bangalore mug for your morning tea or coffee. Show your support for RCB while sipping your drink.",
+    "price": "399",
+    "mrp": "599",
+    "imageURL": "https://example.com/rcb-mug.png"
+  },
+  {
+    "id": 11,
+    "title": "Signed Ball",
+    "description": "A limited edition cricket ball autographed by your favorite IPL players. A perfect collector’s item.",
+    "price": "2999",
+    "mrp": "3999",
+    "imageURL": "https://example.com/signed-ball.png"
+  },
+  {
+    "id": 12,
+    "title": "RCB Flag",
+    "description": "Official RCB flag to proudly display your team spirit during IPL matches.",
+    "price": "599",
+    "mrp": "799",
+    "imageURL": "https://example.com/rcb-flag.png"
+  },
+  {
+    "id": 13,
+    "title": "KKR Keychain",
+    "description": "Small, durable keychain with Kolkata Knight Riders logo. Carry your team spirit wherever you go.",
+    "price": "199",
+    "mrp": "299",
+    "imageURL": "https://example.com/kkr-keychain.png"
+  },
+  {
+    "id": 14,
+    "title": "Kids Jersey",
+    "description": "Official IPL jersey for kids, available in various team designs and sizes. Perfect for the young cricket fan.",
+    "price": "899",
+    "mrp": "1299",
+    "imageURL": "https://example.com/kids-ipl-jersey.png"
+  },
+  {
+    "id": 15,
+    "title": "Water Bottle",
+    "description": "Official IPL branded water bottle to stay hydrated while supporting your favorite team.",
+    "price": "299",
+    "mrp": "399",
+    "imageURL": "https://example.com/ipl-waterbottle.png"
+  },
+  {
+    "id": 16,
+    "title": "Digital Watch",
+    "description": "Stylish and sporty digital watch with IPL branding. Show your team pride on your wrist.",
+    "price": "1499",
+    "mrp": "1999",
+    "imageURL": "https://example.com/ipl-digital-watch.png"
+  },
+  {
+    "id": 17,
+    "title": "RR Hoodie",
+    "description": "Rajasthan Royals team hoodie for fans. Comfortable and stylish for match days.",
+    "price": "1499",
+    "mrp": "1999",
+    "imageURL": "https://example.com/rr-hoodie.png"
+  },
+  {
+    "id": 18,
+    "title": "Party Pack",
+    "description": "Celebrate your team’s victory with this IPL party pack, including cups, plates, napkins, and party decorations.",
+    "price": "799",
+    "mrp": "1099",
+    "imageURL": "https://example.com/ipl-party-pack.png"
+  }
+]

@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body,html{
+    background-color: #F8F8F8;
+}
+.hide-scrollbar::-webkit-scrollbar {
+    display: none; /* Hides the scrollbar */
+  }
+  
+  .hide-scrollbar {
+    overflow-x: scroll; /* Enables horizontal scrolling */
+    -ms-overflow-style: none; /* Hides scrollbar for Internet Explorer */
+    scrollbar-width: none; /* Hides scrollbar for Firefox */
+  }
