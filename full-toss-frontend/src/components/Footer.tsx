@@ -59,7 +59,7 @@ const Footer = () => {
       </div>
 
       {/* Footer Copyright Section */}
-      <div className="mt-14 w-full flex px-2 items-center justify-center gap-10 font-regular text-sm bg-black ">
+      <div className="mt-14 w-full flex px-2 items-center justify-center gap-10 font-regular text-sm bg-black/20 py-2 ">
         <h1>@All Copyright reserved</h1>
         <h1> Designed & developed by Abhishek Maurya</h1>
       </div>

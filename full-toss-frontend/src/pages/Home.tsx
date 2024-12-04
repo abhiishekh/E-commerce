@@ -37,14 +37,14 @@ const Home = () => {
 
         <div className="h-40 md:h-64 w-full bg-Rcb-red mt-24 flex justify-between items-center px-2 rounded-xl">
           <h1 className="text-5xl text-white font-semibold text-center">Popular Item's</h1>
-          <div className="w-48 h-full md:w-64 flex items-center py-2">
+          <div className="w-48 h-full md:w-64 flex items-center py-2 hover:scale-110 transform translate-all duration-300 ">
             <img src={rcbjersey} alt="RCB Jersey" className="w-full h-full object-contain" />
           </div>
         </div>
         </div>
 
         {/* product list  */}
-        <div className="w-full px-2 h-auto my-10 flex flex-wrap justify-center gap-1 md:gap-6">
+        <div className="w-full px-2 h-auto my-10 flex flex-wrap justify-center gap-4 md:gap-6">
           {
             data.map((items)=>(
               <ProductCard
