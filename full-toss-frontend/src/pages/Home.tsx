@@ -18,7 +18,7 @@ const Home = () => {
                 Welcome to RCB Fan Store!
               </h1>
               <div className="w-1/2 sm:w-72 h-64 ">
-                <img src={virat} alt="Virat Kohli" className="w-full h-72 object-contain" />
+                <img src={virat} alt="Virat Kohli" className="w-full h-80 md:h-72 object-contain" />
               </div>
             </div>
           </div>
