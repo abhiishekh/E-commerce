@@ -13,7 +13,7 @@ const Navbar = () => {
      left-0 z-50 flex justify-between px-2 md:px-32 items-center">
       <div>
         <h1 className="hidden lg:block font-medium text-xl" onClick={()=>navigation('/')}>IPL Shopping</h1>
-        <h1 className=" lg:hidden text-2xl" onClick={()=>navigation('/')}><FaHome/></h1>
+        <h1 className=" lg:hidden text-2xl mr-2" onClick={()=>navigation('/')}><FaHome/></h1>
       </div>
       {/* inputbox */}
       <div className="mr-2">
