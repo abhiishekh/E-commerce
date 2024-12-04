@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import CartPage from "./pages/CartPage";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import CheckOut from "./pages/CheckOut";
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
             <Route path="/cart" element={<CartPage />} />
             <Route path="/login" element={<Login/>}/>
             <Route path="/signup" element={<Signup/>}/>
+            <Route path="/checkout" element={<CheckOut/>}/>
           </Routes>
         <Footer /> 
     </BrowserRouter>

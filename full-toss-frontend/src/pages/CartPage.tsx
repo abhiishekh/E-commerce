@@ -1,8 +1,10 @@
 // import React from 'react'
 
+import { useNavigate } from "react-router-dom"
 import CartProduct from "../components/CartProduct"
 
 const CartPage = () => {
+  const navigation = useNavigate()
   return (
     <div className=" flex justify-center ">
 
@@ -12,7 +14,8 @@ const CartPage = () => {
       <h1 className="font-bold">Total Cart Value</h1>
     </div>
     <div className="flex items-center justify-center sticky top-16 z-20">
-        <button  className="bg-Rcb-red/80 backdrop-blur-md hover:bg-Rcb-red transform translate-all duration-300 px-20 py-2 rounded-full text-white font-semibold text-xl ">Checkout</button>
+        <button  className="bg-Rcb-red/80 backdrop-blur-md hover:bg-Rcb-red transform translate-all duration-300 px-20 py-2 rounded-full text-white font-semibold text-xl "
+        onClick={()=>navigation('/checkout')}>Checkout</button>
       </div>
       <div className="h-auto w-full mt-5">
 
