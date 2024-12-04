@@ -10,7 +10,7 @@ const Home = () => {
       <div className="w-full md:w-5/6 2xl:w-3/5 flex flex-col">
 
         {/* First section with gradient */}
-        <div className="w-full h-1/2 bg-gradient-to-b from-Rcb-red to-[#F8F8F8] flex flex-col justify-start md:mb-12">
+        <div className="w-full h-1/2 bg-gradient-to-b from-Rcb-red to-[#EAEDED] flex flex-col justify-start md:mb-12">
           <div className="w-full h-1/2 mt-5 md:mt-12 ">
             <div className="flex justify-between mx-2 lg:mx-10">
               {/* Heading and image */}

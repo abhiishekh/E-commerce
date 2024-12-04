@@ -18,7 +18,7 @@ const Navbar = () => {
       {/* inputbox */}
       <div className="mr-2">
         <input type="text"placeholder="Search items..."
-         className=" px-5 py-1 w-full lg:w-[600px] rounded-md text-sm outline-none text-black font-medium"/>
+         className=" px-5 py-3 w-full lg:w-[600px] rounded-md text-sm outline-none text-black font-medium"/>
       </div>
       {/* //login and cart */}
       <div className="flex gap-4 lg:gap-10 font-semibold text-lg items-center">
