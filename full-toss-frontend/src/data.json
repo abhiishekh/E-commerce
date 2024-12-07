@@ -1,146 +1,116 @@
 [
   {
-    "id": 1,
-    "title": "CSK Jersey",
-    "description": "Official Chennai Super Kings jersey for the IPL 2024 season. Made with breathable fabric and team logos.",
+    "title": "RCB Jersey",
+    "description": "Official Royal chalangers jersey for the IPL 2024 season. Made with breathable fabric and team logos.",
     "price": "1299",
     "mrp": "1799",
-    "imageURL": "https://example.com/csk-jersey.png"
+    "stocks":"10",
+    "imageURL": "https://rukminim2.flixcart.com/image/612/612/xif0q/t-shirt/x/u/b/-original-imagyk8qwghsexzd.jpeg?q=70"
   },
   {
-    "id": 2,
     "title": "MI Cap",
     "description": "Team-branded Mumbai Indians cap, perfect for showing your support for the IPL 2024 season.",
     "price": "699",
     "mrp": "999",
-    "imageURL": "https://example.com/mi-cap.png"
+    "stocks":"10",
+    "imageURL": "https://m.media-amazon.com/images/I/51YYEUwL0iL._AC_UL320_.jpg"
   },
   {
-    "id": 3,
     "title": "RCB Bat",
     "description": "Official RCB cricket bat autographed by star players. A collector's item for true fans of Royal Challengers Bangalore.",
     "price": "8999",
     "mrp": "12000",
-    "imageURL": "https://example.com/rcb-bat.png"
+    "stocks":"10",
+    "imageURL": "https://m.media-amazon.com/images/I/61fAT-atD1L._AC_UL320_.jpg"
   },
   {
-    "id": 4,
     "title": "IPL Cards",
     "description": "Complete set of IPL trading cards featuring all the players from the 2024 season. Limited edition.",
     "price": "499",
     "mrp": "799",
-    "imageURL": "https://example.com/ipl-cards.png"
+    "stocks":"10",
+    "imageURL": "https://rukminim2.flixcart.com/image/612/612/kar44280/card-game/d/g/8/mattel-uno-playing-card-game-family-card-multicolour-108-cards-original-imafs92fxfzjfyhe.jpeg?q=70"
   },
   {
-    "id": 5,
     "title": "DC T-shirt",
     "description": "Comfortable and stylish Delhi Capitals official t-shirt with team logo and IPL 2024 branding.",
     "price": "799",
     "mrp": "1099",
-    "imageURL": "https://example.com/dc-tshirt.png"
+    "stocks":"10",
+    "imageURL": "https://imgs.search.brave.com/GmmDA5FbkP6fvgbOiRffzVTHrDapJXrD4T9y8Bd3Fr8/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NTFsOTlqdmNEUUwu/anBn"
   },
   {
-    "id": 6,
     "title": "KKR Poster",
     "description": "High-quality printed poster featuring the Kolkata Knight Riders team. Perfect for your fan cave or bedroom.",
     "price": "299",
     "mrp": "499",
-    "imageURL": "https://example.com/kkr-poster.png"
+    "stocks":"10",
+    "imageURL": "https://imgs.search.brave.com/hmuzmbaOCJHaNa3Ie7qnMULV4Wlz45BFtvxkzUeyiSg/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9wcmV2/aWV3LnJlZGQuaXQv/a2tyLXBvc3Rlci1m/b3ItdGhpcy15ZWFy/cy1lbC1wcmltZXJv/LXYwLW4xeTRlemh6/YTdyYzEuanBlZz93/aWR0aD02NDAmY3Jv/cD1zbWFydCZhdXRv/PXdlYnAmcz00YmEx/MTg5MjQ5ZTc0Y2Q0/NWY0OTU1Mzk1ZTJj/YjI5ODk4NmZjMzlj"
   },
   {
-    "id": 7,
     "title": "IPL Ball",
     "description": "High-quality cricket ball used in the IPL 2024 matches. Officially branded for professional play.",
     "price": "699",
     "mrp": "999",
-    "imageURL": "https://example.com/ipl-ball.png"
+    "stocks":"10",
+    "imageURL": "https://imgs.search.brave.com/aTn8xUZFZgXi4vqInUd_21T0pKkWLxoRn5lZ_eFvVSU/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly91cGxv/YWQud2lraW1lZGlh/Lm9yZy93aWtpcGVk/aWEvY29tbW9ucy9i/L2IwL0NyaWNrZXRi/YWxsLnBuZw"
   },
   {
-    "id": 8,
     "title": "RCB Hoodie",
     "description": "Warm and comfortable hoodie with RCB branding. Perfect for chilly evenings during match time.",
     "price": "1499",
     "mrp": "1999",
-    "imageURL": "https://example.com/rcb-hoodie.png"
+    "stocks":"10",
+    "imageURL": "https://imgs.search.brave.com/3jfGqZsXf636zW3x1ZhfKInjhjCnjiyvzpKqnxg7tsc/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9paDEu/cmVkYnViYmxlLm5l/dC9pbWFnZS4yOTE4/MjAxOTYxLjExMzAv/c3NyY28sbGlnaHR3/ZWlnaHRfaG9vZGll/LHdvbWVucywxMDEw/MTA6MDFjNWNhMjdj/Nixmcm9udCxzcXVh/cmVfcHJvZHVjdCx4/NjAwLWJnLGY4Zjhm/OC4xLmpwZw"
   },
   {
-    "id": 9,
     "title": "MI Backpack",
     "description": "Official Mumbai Indians team backpack with a spacious compartment for all your gear and accessories.",
     "price": "1299",
     "mrp": "1599",
-    "imageURL": "https://example.com/mi-backpack.png"
+    "stocks":"10",
+    "imageURL": "https://imgs.search.brave.com/9dp0mO4eADhmvzeqrs_B39V9BeMrta3UHxvmfoCsQwE/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/c2hvcGlmeS5jb20v/cy9maWxlcy8xLzA0/NTkvMzc3NS80MjYy/L3Byb2R1Y3RzL01J/RFMucG5nP3Y9MTY3/OTM5MjM4Nw"
   },
   {
-    "id": 10,
     "title": "RCB Mug",
     "description": "Official Royal Challengers Bangalore mug for your morning tea or coffee. Show your support for RCB while sipping your drink.",
     "price": "399",
     "mrp": "599",
-    "imageURL": "https://example.com/rcb-mug.png"
+    "stocks":"10",
+    "imageURL": "https://imgs.search.brave.com/iPVwirG_O2Ta17zRuLkEHifH36xcyKpDVZZ7eUkgfAc/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NDFIYjRyamJUYkwu/anBn"
   },
   {
-    "id": 11,
     "title": "Signed Ball",
     "description": "A limited edition cricket ball autographed by your favorite IPL players. A perfect collector’s item.",
     "price": "2999",
     "mrp": "3999",
-    "imageURL": "https://example.com/signed-ball.png"
+    "stocks":"10",
+    "imageURL": "https://imgs.search.brave.com/FkrgKobNjKEYkMoIhT5s0OiWTgNeO8WzwZWB6lDZdt0/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9wcmV2/aWV3LnJlZGQuaXQv/aS1nb3QtdGhpcy1y/aXNoYWJoLXBhbnQt/c2lnbmVkLWJhbGwt/Y2F1c2UtbXktZGFk/LXdvcmtzLWZvci12/MC11bnhnNjl4OTE5/M2UxLmpwZWc_d2lk/dGg9NjQwJmNyb3A9/c21hcnQmYXV0bz13/ZWJwJnM9YmZjODQ4/YzIzOTc0N2MxYWFl/NjdmYWE5NzRjYTQy/ODYzMDIxNmQzZg"
   },
   {
-    "id": 12,
     "title": "RCB Flag",
     "description": "Official RCB flag to proudly display your team spirit during IPL matches.",
     "price": "599",
     "mrp": "799",
-    "imageURL": "https://example.com/rcb-flag.png"
+    "stocks":"10",
+    "imageURL": "https://imgs.search.brave.com/F3ZAla9k954TDQVhvf2vHQmCtt3HjZUnnOtKwcZZsZA/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/MzEtRFRYbXNkbVMu/anBn"
   },
+
   {
-    "id": 13,
-    "title": "KKR Keychain",
-    "description": "Small, durable keychain with Kolkata Knight Riders logo. Carry your team spirit wherever you go.",
-    "price": "199",
-    "mrp": "299",
-    "imageURL": "https://example.com/kkr-keychain.png"
-  },
-  {
-    "id": 14,
     "title": "Kids Jersey",
     "description": "Official IPL jersey for kids, available in various team designs and sizes. Perfect for the young cricket fan.",
     "price": "899",
     "mrp": "1299",
-    "imageURL": "https://example.com/kids-ipl-jersey.png"
+    "stocks":"10",
+    "imageURL": "https://imgs.search.brave.com/vUUXuIWYcxCwvVkxWrRCCe4t6A9-Hl_HnmV48gTj_DY/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NTFma21wMGlrVEwu/anBn"
   },
   {
-    "id": 15,
     "title": "Water Bottle",
     "description": "Official IPL branded water bottle to stay hydrated while supporting your favorite team.",
     "price": "299",
     "mrp": "399",
-    "imageURL": "https://example.com/ipl-waterbottle.png"
-  },
-  {
-    "id": 16,
-    "title": "Digital Watch",
-    "description": "Stylish and sporty digital watch with IPL branding. Show your team pride on your wrist.",
-    "price": "1499",
-    "mrp": "1999",
-    "imageURL": "https://example.com/ipl-digital-watch.png"
-  },
-  {
-    "id": 17,
-    "title": "RR Hoodie",
-    "description": "Rajasthan Royals team hoodie for fans. Comfortable and stylish for match days.",
-    "price": "1499",
-    "mrp": "1999",
-    "imageURL": "https://example.com/rr-hoodie.png"
-  },
-  {
-    "id": 18,
-    "title": "Party Pack",
-    "description": "Celebrate your team’s victory with this IPL party pack, including cups, plates, napkins, and party decorations.",
-    "price": "799",
-    "mrp": "1099",
-    "imageURL": "https://example.com/ipl-party-pack.png"
+    "stocks":"10",
+    "imageURL": "https://imgs.search.brave.com/xJGo56RDFOpkYqCFUUvdWCVueYkTxTnZIHzIVbogl7g/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/MzFsYmF1djVabkwu/anBn"
   }
-]
+ 
+  ]

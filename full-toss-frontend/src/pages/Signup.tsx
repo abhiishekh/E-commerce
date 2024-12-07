@@ -1,4 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+// import axios from 'axios'
+import { useAuth } from '../hooks/useAuth';
 
 const teams = [
   'Royal Challengers Bangalore',
@@ -14,47 +17,34 @@ const teams = [
 ];
 
 const Signup = () => {
-  const [formData, setFormData] = useState({
-    username: '',
-    name: '',
-    email: '',
-    password: '',
-    phone: '',
-    theme: ''
-  });
-
-  const [phoneError, setPhoneError] = useState<string>('');
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
-
-    // Check phone number validity for exact 10 digits
-    if (name === 'phone') {
-      if (value.length !== 10) {
-        setPhoneError('Phone number must be exactly 10 digits.');
-      } else {
-        setPhoneError('');
-      }
+  const navigate = useNavigate();
+  const { 
+    usernameError,
+    emailError,
+    phoneError,
+    formData, 
+    handleChange, 
+    Signup, 
+    loading, 
+    error, 
+    responsedata
+   } = useAuth();
+  React.useEffect(()=>{
+    if(responsedata && responsedata.token){
+      localStorage.setItem('token',responsedata.token)
+      navigate('/')
     }
-
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value
-    }));
-  };
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle form submission logic
-    console.log(formData);
-  };
-
+  },[responsedata,navigate])
+  
+  const handleSubmit=(e:React.FormEvent)=>{
+    e.preventDefault()
+    Signup()
+  }
   return (
-    <div className="min-h-screen bg-Rcb-red/10 backdrop:blur-lg flex justify-center items-center ">
+    <div className="min-h-screen bg-Rcb-red/10 backdrop:blur-lg flex justify-center items-center">
       <div className="w-full max-w-md p-8 bg-white rounded-xl shadow-lg mx-2 md:mx-0">
         <h2 className="text-2xl font-semibold text-center mb-6">Sign Up</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
-          {/* Username */}
           <div>
             <label htmlFor="username" className="block text-sm font-medium text-gray-700">Username</label>
             <input
@@ -66,9 +56,9 @@ const Signup = () => {
               className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-Rcb-red"
               required
             />
+            {usernameError && <p className="text-sm text-red-500 mt-2">{usernameError}</p>}
           </div>
 
-          {/* Name */}
           <div>
             <label htmlFor="name" className="block text-sm font-medium text-gray-700">Full Name</label>
             <input
@@ -82,7 +72,6 @@ const Signup = () => {
             />
           </div>
 
-          {/* Email */}
           <div>
             <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
             <input
@@ -94,9 +83,9 @@ const Signup = () => {
               className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-Rcb-red"
               required
             />
+            {emailError && <p className="text-sm text-red-500 mt-2">{emailError}</p>}
           </div>
 
-          {/* Phone Number */}
           <div>
             <label htmlFor="phone" className="block text-sm font-medium text-gray-700">Phone Number</label>
             <input
@@ -109,11 +98,9 @@ const Signup = () => {
               maxLength={10}
               required
             />
-            {/* Error message for phone validation */}
             {phoneError && <p className="text-sm text-red-500 mt-2">{phoneError}</p>}
           </div>
 
-          {/* Password */}
           <div>
             <label htmlFor="password" className="block text-sm font-medium text-gray-700">Password</label>
             <input
@@ -127,13 +114,12 @@ const Signup = () => {
             />
           </div>
 
-          {/* IPL Team Theme */}
           <div>
-            <label htmlFor="theme" className="block text-sm font-medium text-gray-700">Select IPL Team Theme</label>
+            <label htmlFor="iplTeam" className="block text-sm font-medium text-gray-700">Select IPL Team</label>
             <select
-              id="theme"
-              name="theme"
-              value={formData.theme}
+              id="iplTeam"
+              name="iplTeam"
+              value={formData.iplTeam}
               onChange={handleChange}
               className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-Rcb-red"
               required
@@ -147,16 +133,16 @@ const Signup = () => {
             </select>
           </div>
 
-          {/* Submit Button */}
           <div>
             <button
               type="submit"
               className="w-full py-2 px-4 bg-Rcb-red text-white rounded-md hover:bg-Rcb-darkred focus:outline-none"
-              disabled={phoneError !== '' || !formData.phone || !formData.theme}
+              disabled={phoneError !== '' || usernameError !== '' || emailError !== '' || !formData.phone || !formData.iplTeam || !formData.username || !formData.email}
             >
-              Sign Up
+              {loading ? 'loading...' : 'Signup'}
             </button>
           </div>
+          {error && <p className="text-sm text-red-500 mt-2">{error}</p>}
         </form>
       </div>
     </div>

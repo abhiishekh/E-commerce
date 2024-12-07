@@ -9,7 +9,7 @@ export default {
       colors:{
         'Mi-blue':"#0051A2",
         'Csk-yellow':"#F7D10E",
-        'Rcb-red':'#e1260a',
+        'Rcb-red':'#EC1C24',
         'Kkr-purple':'#512D6D',
         'Dc-blue':'#0066B3',
         'Shr-orange':'#FF6A00',

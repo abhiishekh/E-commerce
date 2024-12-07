@@ -1,21 +1,53 @@
-// import React from 'react'
-import rcbjersey from "../assets/images/rcbjersey.png";
-interface list{
+import { useState } from "react";
+import axios from "axios";
+
+interface List {
   title: string;
   price: string;
   mrp: string;
-  // imageUrl: string;
-  // id: number;
+  imageURL: string;
+  _id: string | null | undefined;
 }
-const ProductCard:React.FC<list> = ({title, price, mrp }) => {
-  const discount = Math.round((parseInt(mrp)- parseInt(price))/parseInt(mrp)*100 )
+
+const ProductCard: React.FC<List> = ({ _id, title, price, mrp, imageURL }) => {
+  const [loading, setLoading] = useState<boolean>(false);
+  const discount = Math.round((parseInt(mrp) - parseInt(price)) / parseInt(mrp) * 100);
+
+  
+  const handleCart = async () => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      console.log("Token not available");
+      return;
+    }
+
+    try {
+      setLoading(true);
+      const response = await axios.post(
+        `http://localhost:3000/api/v1/addtocart/${_id}`,
+        {},
+        {
+          headers: {
+            token: token,
+          },
+        }
+      );
+      console.log("Product added to cart:", response.data);
+    } catch (error: any) {
+      console.error("Error adding product to cart:", error.message || error);
+      // alert('Failed to add product to cart. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="w-64 sm:w-48 h-auto md:w-64 bg-white rounded-lg p-2">
       <div className="flex justify-center bg-[#F7F7F7] hover:scale-105 transform translate-all duration-300 ease-in-out ">
-        <div className="w-32 md:w-48 flex justify-center rounded-lg">
+        <div className="w-44 md:w-48 h-64 flex justify-center rounded-lg">
           <img
-            src={rcbjersey}
-            alt=""
+            src={imageURL}
+            alt={title}
             className="w-full h-full object-contain"
           />
         </div>
@@ -31,9 +63,13 @@ const ProductCard:React.FC<list> = ({title, price, mrp }) => {
         </div>
       </div>
       <div className="w-full ">
-        <button className="w-full rounded-md mt-2 py-1 px-2 bg-Rcb-red/80 text-white font-semibold
-        hover:bg-Rcb-red transform transition-all duration-300 ease-in-out">
-          Add to cart</button>
+        <button
+          className="w-full rounded-md mt-2 py-1 px-2 bg-Rcb-red/80 text-white font-semibold hover:bg-Rcb-red transform transition-all duration-300 ease-in-out"
+          onClick={handleCart}
+         
+        >
+          {loading ? 'Adding...' : 'Add to cart'}
+        </button>
       </div>
     </div>
   );
