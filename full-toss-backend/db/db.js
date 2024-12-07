@@ -19,7 +19,7 @@ const user = new Schema({
     phone:{type:String, required:true},
     iplTeam:{type:String, required:true},
     address:[{type:String,}],
-    items:{type:mongoose.Schema.Types.ObjectId,ref:'products'},
+    items:[{type:mongoose.Schema.Types.ObjectId,ref:'products'}],
 })
 
 const ProductModule = mongoose.model('products',product)

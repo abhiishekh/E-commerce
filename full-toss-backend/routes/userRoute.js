@@ -1,5 +1,5 @@
 import express from "express";
-import { UserModule } from "../db/db.js";
+import { ProductModule, UserModule } from "../db/db.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
@@ -12,13 +12,15 @@ route.post("/signup", async function (req, res) {
   const { username, name, email, password, phone, iplTeam } = req.body;
 
   try {
-    const existinguser = await UserModule.findOne({$or:[{username},{email}]})
-    if(existinguser){
-      if(existinguser.username === username){
-        return res.status(400).json({message:"username allready taken"})
+    const existinguser = await UserModule.findOne({
+      $or: [{ username }, { email }],
+    });
+    if (existinguser) {
+      if (existinguser.username === username) {
+        return res.status(400).json({ message: "username allready taken" });
       }
-      if(existinguser.email === email){
-        return res.status(400).json({message:"email allready registered"})
+      if (existinguser.email === email) {
+        return res.status(400).json({ message: "email allready registered" });
       }
     }
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -38,22 +40,24 @@ route.post("/signup", async function (req, res) {
     const token = jwt.sign({ _id: response._id }, jwt_secret, {
       expiresIn: "1d",
     });
+    const id = response._id
 
-    res.status(200).json({ message: "Successful creation", token });
+    res.status(200).json({ message: "Successful creation", token,id });
   } catch (error) {
     console.log("Error during signup:", error.message);
-    if(error.name == 'validationError'){
-
-      return res.status(400).json({ message: "invalid input data", error:error.message });
+    if (error.name == "validationError") {
+      return res
+        .status(400)
+        .json({ message: "invalid input data", error: error.message });
     }
-    return res.status(500).json({message:"Something went wrong"})
+    return res.status(500).json({ message: "Something went wrong" });
   }
 });
 
 route.post("/signin", async function (req, res) {
   const { email, password } = req.body;
   if (!email || !password) {
-    console.log("medetory fields are required");
+    console.log("mandatory fields are required");
     return;
   }
 
@@ -63,24 +67,27 @@ route.post("/signin", async function (req, res) {
     });
     if (!response) {
       console.log("user not found");
-      res.status(204).json({
+      return res.status(204).json({
         message: "User not found",
       });
     }
     const isMatch = await bcrypt.compare(password, response.password);
     if (!isMatch) {
-      console.log("Incorrect password");
+      console.log("Incorrect username or password");
       return res.status(401).json({
-        message: "Incorrect password",
+        message: "Incorrect username or password",
       });
     }
 
     const token = jwt.sign({ _id: response._id }, jwt_secret, {
       expiresIn: "1d",
     });
+    const id = response._id
 
     res.status(200).json({
+      message:"login successful",
       token,
+      id,
     });
   } catch (error) {
     console.log("something went wrong " + error);
@@ -89,5 +96,97 @@ route.post("/signin", async function (req, res) {
     });
   }
 });
+route.get("/user/:id", async function (req, res) {
+  const id = req.params.id;
+  if (!id) {
+    return res.status(404).json({
+      message: "no token provided",
+    });
+  }
+  try {
+    const response = await UserModule.findOne({
+      _id: id,
+    });
+    if (!response && !response.data){
+
+      return res.status(400).json({
+        message: "No user found",
+      });
+    }
+    res.status(200).json({
+      response
+    })
+
+  } catch (error) {
+    console.log("Something went wrong " + error)
+    res.status(500).json({
+      message:"something went wrong",
+      error:error.message
+    })
+  }
+});
+route.get('/user',async function(req,res){
+  try {
+    
+    const response = await UserModule.find()
+    if(!response && !response.data){
+      res.status(404).json({
+        message:'no User Found'
+      })
+
+    }
+    res.status(201).json({
+      response
+    })
+  } catch (error) {
+    console.log("Something went wrong "+error)
+    return res.status(500).json({
+      message:"Something went wrogn",
+      error:error.message
+    })
+  }
+})
+route.post('/addtocart/:id',async function(req,res){
+    const productId = req.params.id
+
+    const token = req.headers.token
+    if(!token){
+      return res.status(401).json({
+        message:"token not available"
+      })
+    }
+    try {
+    const userId = jwt.verify(token, jwt_secret)._id
+    if (!userId) {
+      return res.status(401).json({ message: "User ID from token is invalid" });
+    }
+
+    const product = await ProductModule.findOne({
+      _id:productId
+    })
+    if(!product){
+      return res.status(401).json({
+        message:"product not available"
+      })
+    }
+      const response = await UserModule.findOneAndUpdate(
+       { _id:userId},
+        {$addToSet:{items:productId}},
+        {new:true}
+      )
+      if(!response){
+        return res.status(404).json({
+          message:"user not found"
+        })
+      }
+      res.status(201).json({
+        message:"product added to cart",
+        response
+      })
+    } catch (error) {
+      console.error(error);
+    res.status(500).json({ message: 'Server error' });
+    }
+})
 
 export default route;
