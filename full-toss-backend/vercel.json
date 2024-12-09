@@ -8,7 +8,7 @@
       }
     ],
     "env":{
-      "MONGO_URL" :" mongodb+srv://abhisheaurya:ecommerce@e-commere.omp3f.mongodb.net/",
+      "MONGO_URL" :"mongodb+srv://abhisheaurya:ecommerce@e-commere.omp3f.mongodb.net/",
      " PORT" : "3000",
      "jwt_secret" : "ilovecoding"
     },
