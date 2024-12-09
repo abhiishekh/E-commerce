@@ -8,6 +8,9 @@ dotenv.config();
 const jwt_secret = process.env.jwt_secret;
 const route = express.Router();
 
+route.get('/',function(req,res){
+  res.send("backend is working")
+})
 route.post("/signup", async function (req, res) {
   const { username, name, email, password, phone, iplTeam } = req.body;
 
