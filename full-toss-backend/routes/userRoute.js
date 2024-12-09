@@ -146,6 +146,43 @@ route.get('/user',async function(req,res){
     })
   }
 })
+route.get('/cartitems',async function(req,res){
+  const token = req.headers.token
+
+  try {
+    const verifiedData = jwt.verify(token,jwt_secret)
+    const userId = verifiedData._id
+    const response = await UserModule.findOne({
+      _id:userId
+    })
+    
+    if(!response){
+      console.log("user not fond with token Id")
+      return 
+    }
+    const productId = response.items
+
+    const arr = await ProductModule.find({
+      _id:productId
+    })
+    if(arr.length === 0){
+      return res.status(404).json({
+        message:"Cart is empty"
+      })
+    }
+    res.status(201).json({
+      arr
+    })
+  } catch (error) {
+    console.log("Something went wrong" + error)
+    return res.status(500).json({
+      message:"bad server response",
+      error:error.message
+    })
+    
+  }
+})
+
 route.post('/addtocart/:id',async function(req,res){
     const productId = req.params.id
 
@@ -188,5 +225,37 @@ route.post('/addtocart/:id',async function(req,res){
     res.status(500).json({ message: 'Server error' });
     }
 })
+route.delete('/removefromcart/:id', async function(req, res) {
+  const productId = req.params.id; 
+  const token = req.headers.token;
+
+  if (!token) {
+    return res.status(401).json({ message: "Token is required" });
+  }
+
+  try {
+    const verifiedData = jwt.verify(token, jwt_secret);
+    const userId = verifiedData._id;
+    const user = await UserModule.findOne({ _id: userId });
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    const productIndex = user.items.findIndex(item => item.toString() === productId);
+    if (productIndex === -1) {
+      return res.status(404).json({ message: "Product not found in cart" });
+    }
+
+    user.items.splice(productIndex, 1);
+    await user.save();
+
+    return res.status(200).json({ message: "Product removed from cart", items: user.items });
+
+  } catch (error) {
+    console.log("Something went wrong: " + error);
+    return res.status(500).json({ message: "Server error", error: error.message });
+  }
+});
+
 
 export default route;
