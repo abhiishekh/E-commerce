@@ -24,7 +24,7 @@ const ProductCard: React.FC<List> = ({ _id, title, price, mrp, imageURL }) => {
     try {
       setLoading(true);
       const response = await axios.post(
-        `http://localhost:3000/api/v1/addtocart/${_id}`,
+        `${import.meta.env.VITE_BACKEND_URL}/addtocart/${_id}`,
         {},
         {
           headers: {

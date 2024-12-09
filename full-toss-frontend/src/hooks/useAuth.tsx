@@ -93,7 +93,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     setLoading(true);
     setError(null);
     try {
-      const response = await axios.post("http://localhost:3000/api/v1/signup", formData);
+      const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/signup`, formData);
       setResponseData(response.data);
       localStorage.setItem('token',response.data.token)
       const id = response.data.id
@@ -119,7 +119,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     setLoading(true);
     setError(null);
     try {
-      const response = await axios.post("http://localhost:3000/api/v1/signin", formData);
+      const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/signin`, formData);
       setResponseData(response.data);
       const token = response.data.token
       localStorage.setItem('token',token)

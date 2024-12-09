@@ -14,7 +14,7 @@ interface itemType {
 
 const Home = () => {
   const { data, loading, Error } = useFetch({
-    url: "http://localhost:3000/api/v1/product"});
+    url: `${import.meta.env.VITE_BACKEND_URL}/product`});
 
   
 if(Error)return <div className=" w-full min-h-screen text-center">Page Not Found : {Error}</div>

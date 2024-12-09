@@ -7,8 +7,7 @@ const Profile = () => {
     const navigate = useNavigate()
     const {logout,isAuthenticated} = useAuth()
     const id = localStorage.getItem('id')
-    const {data, loading, Error } = useFetch({url:`http://localhost:3000/api/v1/user/${id}`})
-
+    const {data, loading, Error } = useFetch({url:`${import.meta.env.VITE_BACKEND_URL}/user/${id}`})
     const handlelogout = () => {
         logout();
         navigate('/')

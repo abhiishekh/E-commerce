@@ -13,7 +13,7 @@ const Navbar = () => {
   return (
     <div
       className=" h-12 w-full bg-Rcb-red text-white sticky top-0
-     left-0 z-50 flex justify-between px-2 md:px-32 items-center"
+     left-0 z-50 flex justify-between px-2 md:px-32 2xl:px-64 items-center"
     >
       <div>
         <h1
@@ -50,7 +50,9 @@ const Navbar = () => {
           <p>
             <FaCartPlus />
           </p>
-          <p className="w-5 h-5 absolute top-[0.15rem] z-60 text-sm font-normal ml-1 md:ml-3 rounded-full bg-gray-400/50 backdrop-blur-md flex items-center justify-center">1</p>
+          <p className="w-5 h-5 absolute top-[0.15rem] z-60 text-sm font-normal ml-1 md:ml-3 rounded-full bg-gray-400/50 backdrop-blur-md flex items-center justify-center">
+            1
+          </p>
         </div>
       </div>
     </div>
