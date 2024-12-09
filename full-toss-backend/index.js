@@ -7,7 +7,10 @@ import cors from 'cors'
 dotenv.config()
 const PORT = process.env.PORT
 const MONGO_URL = process.env.MONGO_URL
-
+if (!MONGO_URL) {
+    console.error("MongoDB connection URL is not defined in environment variables");
+    process.exit(1); 
+  }
 mongoose.connect(MONGO_URL).then(()=>console.log("Database connected")).catch((e)=>console.log("An error occured" + e))
 
 const app = express()
