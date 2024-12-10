@@ -1,5 +1,6 @@
 import axios from "axios";
-import { useState } from "react";
+import React, { useState } from "react";
+import useCount from "../hooks/useCount";
 
 interface List {
   title: string;
@@ -12,7 +13,7 @@ interface List {
 
 const CartProduct: React.FC<List> = ({ _id, title, price, mrp, imageURL, stocks }) => {
   const [loading, setLoading] = useState<boolean>(false);
-
+  const {count, increaseCount, decreaseCount} = useCount()
   const handleRemove = async () => {
     const token = localStorage.getItem("token");
     if (!token) {
@@ -38,6 +39,7 @@ const CartProduct: React.FC<List> = ({ _id, title, price, mrp, imageURL, stocks 
     }
   };
 
+
   return (
     <div className="bg-white m-2 rounded-lg p-3 lg:p-5 flex justify-between items-center">
       <div className="flex gap-4">
@@ -48,13 +50,14 @@ const CartProduct: React.FC<List> = ({ _id, title, price, mrp, imageURL, stocks 
           <h1 className="font-semibold capitalize">{title}</h1>
           <h2 className="text-green-500 capitalize">{stocks ? "In stock" : "Unavailable"}</h2>
           <div className="flex gap-2 items-center">
-            <h1 className="font-semibold">₹{price}</h1>
-            <h1 className="font-semibold line-through text-gray-400 text-sm">₹{mrp}</h1>
+            <h1 className="font-semibold">₹{price*count}</h1>
+            <h1 className="font-semibold line-through text-gray-400 text-sm">₹{mrp*count}</h1>
           </div>
           <div className="flex items-center gap-4 bg-gray-300 rounded-md text-black font-medium overflow-hidden mt-5 py-1">
-            <p className="w-7 h-full flex items-center justify-center hover:cursor-pointer">-</p>
-            <p className="text-Rcb-red">1</p>
-            <p className="w-7 h-full flex items-center justify-center hover:cursor-pointer">+</p>
+               <p className="w-7 h-full flex items-center justify-center hover:cursor-pointer" onClick={decreaseCount}>-</p>
+          
+            <p className="text-Rcb-red">{count}</p>
+            <p className="w-7 h-full flex items-center justify-center hover:cursor-pointer" onClick={increaseCount}>+</p>
           </div>
         </div>
       </div>
