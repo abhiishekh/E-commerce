@@ -1,6 +1,5 @@
+import { useState } from "react";
 import axios from "axios";
-import React, { useState } from "react";
-import useCount from "../hooks/useCount";
 
 interface List {
   title: string;
@@ -9,11 +8,16 @@ interface List {
   imageURL: string;
   _id: string | null | undefined;
   stocks: number;
+  quantity: number;
+  onQuantityChange: (itemId: string, newQuantity: number) => void;
+  onRemove: (itemId: string) => void;
 }
 
-const CartProduct: React.FC<List> = ({ _id, title, price, mrp, imageURL, stocks }) => {
+const CartProduct: React.FC<List> = ({ _id, title, price, mrp, imageURL, stocks, quantity, onQuantityChange, onRemove }) => {
   const [loading, setLoading] = useState<boolean>(false);
-  const {count, increaseCount, decreaseCount} = useCount()
+  const updatedPrice = price * quantity;
+  const updatedMrp = mrp * quantity;
+
   const handleRemove = async () => {
     const token = localStorage.getItem("token");
     if (!token) {
@@ -29,8 +33,22 @@ const CartProduct: React.FC<List> = ({ _id, title, price, mrp, imageURL, stocks 
         },
       });
       console.log(response);
+
+      if (_id) {
+        // Trigger the parent component's onRemove function
+        onRemove(_id); 
+      }
+
       alert("Item removed from cart");
-      window.location.reload()
+
+      // Update the quantities in localStorage to reflect the removal
+      const storedQuantities = localStorage.getItem('quantities');
+      if (storedQuantities) {
+        const updatedQuantities = JSON.parse(storedQuantities);
+        delete updatedQuantities[_id || '']; // Remove the item from quantities
+        localStorage.setItem('quantities', JSON.stringify(updatedQuantities));
+      }
+
     } catch (error) {
       alert("Something went wrong while removing the item.");
       console.log("Error:", error);
@@ -39,6 +57,25 @@ const CartProduct: React.FC<List> = ({ _id, title, price, mrp, imageURL, stocks 
     }
   };
 
+  const handleIncrease = () => {
+    if (_id) {
+      if (quantity < 5) {
+        onQuantityChange(_id, quantity + 1);
+      } else {
+        alert("Cannot buy more than 5 of this item.");
+      }
+    }
+  };
+
+  const handleDecrease = () => {
+    if (_id) {
+      if (quantity > 1) {
+        onQuantityChange(_id, quantity - 1);
+      } else {
+        handleRemove();  // Remove item when quantity is 0
+      }
+    }
+  };
 
   return (
     <div className="bg-white m-2 rounded-lg p-3 lg:p-5 flex justify-between items-center">
@@ -50,14 +87,13 @@ const CartProduct: React.FC<List> = ({ _id, title, price, mrp, imageURL, stocks 
           <h1 className="font-semibold capitalize">{title}</h1>
           <h2 className="text-green-500 capitalize">{stocks ? "In stock" : "Unavailable"}</h2>
           <div className="flex gap-2 items-center">
-            <h1 className="font-semibold">₹{price*count}</h1>
-            <h1 className="font-semibold line-through text-gray-400 text-sm">₹{mrp*count}</h1>
+            <h1 className="font-semibold">₹{updatedPrice}</h1>
+            <h1 className="font-semibold line-through text-gray-400 text-sm">₹{updatedMrp}</h1>
           </div>
           <div className="flex items-center gap-4 bg-gray-300 rounded-md text-black font-medium overflow-hidden mt-5 py-1">
-               <p className="w-7 h-full flex items-center justify-center hover:cursor-pointer" onClick={decreaseCount}>-</p>
-          
-            <p className="text-Rcb-red">{count}</p>
-            <p className="w-7 h-full flex items-center justify-center hover:cursor-pointer" onClick={increaseCount}>+</p>
+            <p className="w-7 h-full flex items-center justify-center hover:cursor-pointer" onClick={handleDecrease}>-</p>
+            <p className="text-Rcb-red">{quantity}</p>
+            <p className="w-7 h-full flex items-center justify-center hover:cursor-pointer" onClick={handleIncrease}>+</p>
           </div>
         </div>
       </div>
@@ -65,7 +101,7 @@ const CartProduct: React.FC<List> = ({ _id, title, price, mrp, imageURL, stocks 
         <button
           className="flex items-center gap-4 font-medium bg-Rcb-red/80 hover:bg-Rcb-red transform translate-all duration-300 py-1 px-2 text-white rounded-md justify-center"
           onClick={handleRemove}
-          disabled={loading} 
+          disabled={loading}
         >
           {loading ? "Removing..." : "Remove"}
         </button>

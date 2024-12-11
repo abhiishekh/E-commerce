@@ -4,6 +4,7 @@ const useCount = () => {
     const storedCount = localStorage.getItem('count')
     const initialCount = storedCount ? parseInt(storedCount, 10) : 1;
     const [count, setCount] = useState<number>(initialCount)
+    const [toggle, setToggle] = useState<boolean>(false)
     const increaseCount=()=>{
         if(count >= 5){
             alert("can not add more than 5 products")
@@ -20,7 +21,6 @@ const useCount = () => {
     }
     
 
-
     useEffect(()=>{
         localStorage.setItem('count',count.toString());
     },[count])
@@ -30,6 +30,8 @@ const useCount = () => {
     setCount,
     increaseCount,
     decreaseCount,
+    toggle,
+    setToggle,
   }
 }
 
