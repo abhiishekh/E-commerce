@@ -17,11 +17,18 @@ const Profile = () => {
         navigate('/login')
       }
 
-      if(loading)return <div>loading...</div>
+      if (loading) {
+        return (
+          <div className="w-full min-h-screen flex items-center justify-center">
+            <div className="w-spinner h-spinner border-4 border-t-4 border-gray-300 border-t-blue-500 rounded-full animate-spin-fast"></div>
+            <p className="ml-4 text-xl">Loading...</p>
+          </div>
+        );
+      }
       if(Error)return <div>Error: {Error}</div>
 
   return (
-    <div className='w-full  min-h-screen bg-Rcb-red/10 flex justify-center'>
+    <div className='w-full  min-h-screen bg-[var(--primary-color)]/10 flex justify-center'>
         <div className='mx-2 bg-transparent h-auto w-full md:w-1/2 flex flex-col '>
            <div className='w-full flex flex-col items-center mt-10 '>
             

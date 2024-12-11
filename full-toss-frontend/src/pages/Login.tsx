@@ -26,7 +26,7 @@ const Login = () => {
   },[responsedata,navigate])
 
   return (
-    <div className="min-h-screen bg-Rcb-red/10 backdrop-blur-lg flex justify-center items-center">
+    <div className="min-h-screen bg-[var(--primary-color)]/10 backdrop-blur-lg flex justify-center items-center">
       <div className="w-full max-w-md p-8 bg-white rounded-xl shadow-lg mx-2 md:mx-0">
         <h2 className="text-2xl font-semibold text-center mb-6">Login</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -40,7 +40,7 @@ const Login = () => {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-Rcb-red"
+              className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]"
               required
             />
           </div>
@@ -54,7 +54,7 @@ const Login = () => {
               name="password"
               value={formData.password}
               onChange={handleChange}
-              className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-Rcb-red"
+              className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]"
               required
             />
           </div>
@@ -63,7 +63,7 @@ const Login = () => {
           <div>
             <button
               type="submit"
-              className="w-full py-2 px-4 bg-Rcb-red text-white rounded-md hover:bg-Rcb-darkred focus:outline-none"
+              className="w-full py-2 px-4 bg-[var(--primary-color)] text-white rounded-md hover:bg-Rcb-darkred focus:outline-none"
             >
               {loading ? 'loading...':'Login'}
             </button>

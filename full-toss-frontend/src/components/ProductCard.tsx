@@ -64,7 +64,7 @@ const ProductCard: React.FC<List> = ({ _id, title, price, mrp, imageURL }) => {
       </div>
       <div className="w-full ">
         <button
-          className="w-full rounded-md mt-2 py-1 px-2 bg-Rcb-red/80 text-white font-semibold hover:bg-Rcb-red transform transition-all duration-300 ease-in-out"
+          className="w-full rounded-md mt-2 py-1 px-2 bg-[var(--primary-color)] text-white font-semibold hover:bg-[var(--primary-color)] transform transition-all duration-300 ease-in-out"
           onClick={handleCart}
          
         >

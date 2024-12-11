@@ -4,16 +4,16 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 
 const teams = [
-  'Royal Challengers Bangalore',
-  'Chennai Super Kings',
-  'Mumbai Indians',
-  'Lucknow Super Giants',
-  'Gujarat Titans',
-  'Punjab Kings',
-  'Rajasthan Royals',
-  'Delhi Capitals',
-  'Kolkata Knight Riders',
-  'Sunrisers Hyderabad'
+  'MI',
+  'CSK',
+  'RCB',
+  'KKR',
+  'DC',
+  'Pubjab',
+  'RR',
+  'SHR',
+  'GT',
+
 ];
 
 const Signup = () => {
@@ -41,7 +41,7 @@ const Signup = () => {
     Signup()
   }
   return (
-    <div className="min-h-screen bg-Rcb-red/10 backdrop:blur-lg flex justify-center items-center">
+    <div className="min-h-screen bg-[var(--primary-color)]/10 backdrop:blur-lg flex justify-center items-center">
       <div className="w-full max-w-md p-8 bg-white rounded-xl shadow-lg mx-2 md:mx-0">
         <h2 className="text-2xl font-semibold text-center mb-6">Sign Up</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -53,7 +53,7 @@ const Signup = () => {
               name="username"
               value={formData.username}
               onChange={handleChange}
-              className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-Rcb-red"
+              className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]"
               required
             />
             {usernameError && <p className="text-sm text-red-500 mt-2">{usernameError}</p>}
@@ -67,7 +67,7 @@ const Signup = () => {
               name="name"
               value={formData.name}
               onChange={handleChange}
-              className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-Rcb-red"
+              className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]"
               required
             />
           </div>
@@ -80,7 +80,7 @@ const Signup = () => {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-Rcb-red"
+              className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]"
               required
             />
             {emailError && <p className="text-sm text-red-500 mt-2">{emailError}</p>}
@@ -94,7 +94,7 @@ const Signup = () => {
               name="phone"
               value={formData.phone}
               onChange={handleChange}
-              className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-Rcb-red"
+              className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]"
               maxLength={10}
               required
             />
@@ -109,7 +109,7 @@ const Signup = () => {
               name="password"
               value={formData.password}
               onChange={handleChange}
-              className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-Rcb-red"
+              className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]"
               required
             />
           </div>
@@ -121,7 +121,7 @@ const Signup = () => {
               name="iplTeam"
               value={formData.iplTeam}
               onChange={handleChange}
-              className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-Rcb-red"
+              className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]"
               required
             >
               <option value="">Select a team</option>
@@ -136,7 +136,7 @@ const Signup = () => {
           <div>
             <button
               type="submit"
-              className="w-full py-2 px-4 bg-Rcb-red text-white rounded-md hover:bg-Rcb-darkred focus:outline-none"
+              className="w-full py-2 px-4 bg-[var(--primary-color)] text-white rounded-md hover:bg-Rcb-darkred focus:outline-none"
               disabled={phoneError !== '' || usernameError !== '' || emailError !== '' || !formData.phone || !formData.iplTeam || !formData.username || !formData.email}
             >
               {loading ? 'loading...' : 'Signup'}

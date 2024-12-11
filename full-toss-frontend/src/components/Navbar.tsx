@@ -12,17 +12,20 @@ const Navbar = () => {
   const handlelogin = () => {
     navigation("/login");
   };
-  const {data} = useFetch({url:`${import.meta.env.VITE_BACKEND_URL}/cartitems`})
+  const {data,fetchdata} = useFetch({url:`${import.meta.env.VITE_BACKEND_URL}/cartitems`})
+
+
 
   useEffect(()=>{
-   if(data){
+   if(data && data.length !== undefined){
     setCartLength(data.length)
    }
+   fetchdata()
   },[data])
 
   return (
     <div
-      className=" h-12 w-full bg-Rcb-red text-white sticky top-0
+      className=" h-12 w-full bg-[var(--primary-color)] text-white sticky top-0
      left-0 z-50 flex justify-between px-2 md:px-32 2xl:px-64 items-center"
     >
       <div>
@@ -60,10 +63,13 @@ const Navbar = () => {
           <p>
             <FaCartPlus />
           </p>
-         
+          {cartlength ? (
           <p className="w-5 h-5 absolute top-[0.15rem] z-60 text-sm font-normal ml-1 md:ml-3 rounded-full bg-gray-400/50 backdrop-blur-md flex items-center justify-center">
             {cartlength}
           </p>
+
+          ):('')}
+         
         </div>
       </div>
     </div>

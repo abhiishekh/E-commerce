@@ -35,17 +35,15 @@ const CartProduct: React.FC<List> = ({ _id, title, price, mrp, imageURL, stocks,
       console.log(response);
 
       if (_id) {
-        // Trigger the parent component's onRemove function
         onRemove(_id); 
       }
 
       alert("Item removed from cart");
-
-      // Update the quantities in localStorage to reflect the removal
+     
       const storedQuantities = localStorage.getItem('quantities');
       if (storedQuantities) {
         const updatedQuantities = JSON.parse(storedQuantities);
-        delete updatedQuantities[_id || '']; // Remove the item from quantities
+        delete updatedQuantities[_id || ''];
         localStorage.setItem('quantities', JSON.stringify(updatedQuantities));
       }
 
@@ -72,10 +70,11 @@ const CartProduct: React.FC<List> = ({ _id, title, price, mrp, imageURL, stocks,
       if (quantity > 1) {
         onQuantityChange(_id, quantity - 1);
       } else {
-        handleRemove();  // Remove item when quantity is 0
+        handleRemove(); 
       }
     }
   };
+
 
   return (
     <div className="bg-white m-2 rounded-lg p-3 lg:p-5 flex justify-between items-center">
@@ -99,7 +98,7 @@ const CartProduct: React.FC<List> = ({ _id, title, price, mrp, imageURL, stocks,
       </div>
       <div>
         <button
-          className="flex items-center gap-4 font-medium bg-Rcb-red/80 hover:bg-Rcb-red transform translate-all duration-300 py-1 px-2 text-white rounded-md justify-center"
+          className="flex items-center gap-4 font-medium bg-[var(--primary-color)] hover:bg-[var(--primary-color)] transform translate-all duration-300 py-1 px-2 text-white rounded-md justify-center"
           onClick={handleRemove}
           disabled={loading}
         >

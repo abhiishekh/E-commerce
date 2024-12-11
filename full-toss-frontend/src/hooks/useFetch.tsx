@@ -62,7 +62,8 @@ const useFetch = ({ url }:URL) => {
   return {
     data:responseData,
     loading,
-    Error
+    Error,
+    fetchdata
   }
 };
 

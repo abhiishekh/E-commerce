@@ -1,37 +1,15 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 const useCount = () => {
-    const storedCount = localStorage.getItem('count')
-    const initialCount = storedCount ? parseInt(storedCount, 10) : 1;
-    const [count, setCount] = useState<number>(initialCount)
-    const [toggle, setToggle] = useState<boolean>(false)
-    const increaseCount=()=>{
-        if(count >= 5){
-            alert("can not add more than 5 products")
-            return
-        }
-        setCount(count+1)
-    }
-    const decreaseCount=()=>{
-        if(count <= 1 ){
-            alert("can do below 0 Please remove item manually")
-            return
-        }
-        setCount(count-1)
-    }
-    
 
-    useEffect(()=>{
-        localStorage.setItem('count',count.toString());
-    },[count])
+    const [count, setCount] = useState<number>(0)
+
+    
 
   return {
     count,
     setCount,
-    increaseCount,
-    decreaseCount,
-    toggle,
-    setToggle,
+
   }
 }
 
