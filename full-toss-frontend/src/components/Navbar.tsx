@@ -9,9 +9,11 @@ const Navbar = () => {
   const navigation = useNavigate();
   const [cartlength, setCartLength] = useState<number|string>('')
   const { isAuthenticated } = useAuth();
+
   const handlelogin = () => {
     navigation("/login");
   };
+
   const {data,fetchdata} = useFetch({url:`${import.meta.env.VITE_BACKEND_URL}/cartitems`})
 
 
@@ -19,9 +21,10 @@ const Navbar = () => {
   useEffect(()=>{
    if(data && data.length !== undefined){
     setCartLength(data.length)
-   }
-   fetchdata()
-  },[data])
+    console.log(data.length)
+  }
+  // fetchdata()
+  },[data,isAuthenticated])
 
   return (
     <div
