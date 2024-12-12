@@ -149,6 +149,56 @@ route.get('/user',async function(req,res){
     })
   }
 })
+route.post('/user/address/:id', async function(req, res) {
+  const { address, landmark, city, pincode } = req.body;
+
+  // Check if all address fields are provided
+  if (!address || !landmark || !city || !pincode) {
+    return res.status(400).json({ message: "All address fields are required" });
+  }
+
+  // Create a new address object
+  const newAddress = { address, landmark, city, pincode };
+  const userId = req.params.id;
+
+  // Check if userId is provided
+  if (!userId) {
+    return res.status(400).json({ message: "User ID is required" });
+  }
+
+  try {
+    // Perform the update
+    if(!newAddress){
+      return res.json({
+        message:"no address"
+      })
+    }
+    const response = await UserModule.findOneAndUpdate(
+      { _id: userId },
+      {
+        $addToSet: { address: newAddress }
+      },
+      { new: true } // Return the updated document
+    );
+
+    // If no user found or updated
+    if (!response) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    // Send the updated user data (just the addresses for clarity)
+    return res.status(201).json({
+      message: "Address added successfully",
+      updatedAddress: response.address
+    });
+  } catch (error) {
+    console.error("Error:", error);
+    res.status(500).json({
+      message: "Internal server error"
+    });
+  }
+});
+
 route.get('/cartitems',async function(req,res){
   const token = req.headers.token
 
