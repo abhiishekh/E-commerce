@@ -32,7 +32,7 @@ const Home = () => {
   return (
     <div className="w-full min-h-screen flex justify-center">
 
-      <div className="w-ful h-full flex flex-col bg-[#EAEDED] ">
+      <div className="w-full h-full flex flex-col bg-[#EAEDED] ">
       
         <div className="w-full h-full bg-gradient-to-l from-[#4D03DF] to-[#953FE6] flex flex-col justify-start">
           <div className="w-full md:w-5/6 2xl:w-3/5 mx-auto h-1/2 mt-5 md:mt-12">
