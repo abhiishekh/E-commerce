@@ -1,5 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../hooks/useAuth";
 
 interface List {
   title: string;
@@ -10,6 +12,8 @@ interface List {
 }
 
 const ProductCard: React.FC<List> = ({ _id, title, price, mrp, imageURL }) => {
+  const {cartlength} = useAuth();
+  const navigator = useNavigate()
   const [loading, setLoading] = useState<boolean>(false);
   const discount = Math.round((parseInt(mrp) - parseInt(price)) / parseInt(mrp) * 100);
 
@@ -17,7 +21,9 @@ const ProductCard: React.FC<List> = ({ _id, title, price, mrp, imageURL }) => {
   const handleCart = async () => {
     const token = localStorage.getItem('token');
     if (!token) {
-      console.log("Token not available");
+      // console.log("Token not available");
+      alert("login to add to cart");
+      navigator('/login')
       return;
     }
 
@@ -33,6 +39,7 @@ const ProductCard: React.FC<List> = ({ _id, title, price, mrp, imageURL }) => {
         }
       );
       console.log("Product added to cart:", response.data);
+      await cartlength();
     } catch (error: any) {
       console.error("Error adding product to cart:", error.message || error);
       // alert('Failed to add product to cart. Please try again.');
@@ -64,7 +71,7 @@ const ProductCard: React.FC<List> = ({ _id, title, price, mrp, imageURL }) => {
       </div>
       <div className="w-full ">
         <button
-          className="w-full rounded-md mt-2 py-1 px-2 bg-[var(--primary-color)] text-white font-semibold hover:bg-[var(--primary-color)] transform transition-all duration-300 ease-in-out"
+          className="w-full rounded-md mt-2 py-1 px-2 bg-[#4D03DF]/80 text-white font-semibold hover:bg-[#4D03DF] transform transition-all duration-300 ease-in-out"
           onClick={handleCart}
          
         >

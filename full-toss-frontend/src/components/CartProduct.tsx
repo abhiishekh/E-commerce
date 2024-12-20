@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import { useAuth } from "../hooks/useAuth";
 
 interface List {
   title: string;
@@ -14,6 +15,7 @@ interface List {
 }
 
 const CartProduct: React.FC<List> = ({ _id, title, price, mrp, imageURL, stocks, quantity, onQuantityChange, onRemove }) => {
+  const {cartlength} = useAuth()
   const [loading, setLoading] = useState<boolean>(false);
   const updatedPrice = price * quantity;
   const updatedMrp = mrp * quantity;
@@ -38,7 +40,8 @@ const CartProduct: React.FC<List> = ({ _id, title, price, mrp, imageURL, stocks,
         onRemove(_id); 
       }
 
-      alert("Item removed from cart");
+      // alert("Item removed from cart");
+      await cartlength();
      
       const storedQuantities = localStorage.getItem('quantities');
       if (storedQuantities) {
@@ -98,7 +101,7 @@ const CartProduct: React.FC<List> = ({ _id, title, price, mrp, imageURL, stocks,
       </div>
       <div>
         <button
-          className="flex items-center gap-4 font-medium bg-[var(--primary-color)] hover:bg-[var(--primary-color)] transform translate-all duration-300 py-1 px-2 text-white rounded-md justify-center"
+          className="flex items-center gap-4 font-medium bg-[#953FE6] hover:bg-[#953FE6] transform translate-all duration-300 py-1 px-2 text-white rounded-md justify-center"
           onClick={handleRemove}
           disabled={loading}
         >

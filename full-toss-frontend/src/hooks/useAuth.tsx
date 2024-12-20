@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext, ReactNode } from "react";
+import React, { createContext, useState, useContext, ReactNode, useEffect } from "react";
 import axios from "axios";
 
 interface formdata {
@@ -23,11 +23,13 @@ interface AuthContextType {
   loading: boolean;
   error: string | null;
   responsedata: ResponseData | null;
-  isAuthenticated:boolean;
+  isAuthenticated: boolean;
+  cart: number | string;
   handleChange: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
   Signup: () => void;
   Signin: () => void;
-  logout:() => void;
+  logout: () => void;
+  cartlength: () => void;
 }
 
 interface AuthProviderProps {
@@ -49,10 +51,11 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [responsedata, setResponseData] = useState<ResponseData | null>(null);
-  
+
   const [usernameError, setUsernameError] = useState<string>('');
   const [emailError, setEmailError] = useState<string>('');
   const [phoneError, setPhoneError] = useState<string>('');
+  const [cart, setCart] = useState<number | string>('')
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(!!localStorage.getItem("token"));
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -95,9 +98,9 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     try {
       const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/signup`, formData);
       setResponseData(response.data);
-      localStorage.setItem('token',response.data.token)
+      localStorage.setItem('token', response.data.token)
       const id = response.data.id
-      localStorage.setItem('id',id)
+      localStorage.setItem('id', id)
       setIsAuthenticated(true)
       setFromdata({
         username: '',
@@ -122,9 +125,9 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/signin`, formData);
       setResponseData(response.data);
       const token = response.data.token
-      localStorage.setItem('token',token)
+      localStorage.setItem('token', token)
       const id = response.data.id
-      localStorage.setItem('id',id)
+      localStorage.setItem('id', id)
 
       setIsAuthenticated(true)
       setFromdata({
@@ -142,11 +145,40 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       setLoading(false);
     }
   };
-  const logout = ()=>{
+  const logout = () => {
     localStorage.removeItem('token')
     localStorage.removeItem('id')
     setIsAuthenticated(false)
   }
+  const cartlength = async () => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      setCart(0); 
+      return;
+    } 
+  
+    try {
+      const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/cartitems`, {
+        headers: {
+          token: token
+        }
+      });
+      
+      const cartCount = response.data.arr.length;
+      setCart(cartCount);
+      // console.log("Cart items count: " + cart);
+  
+    } catch (error: any) {
+      console.error("Something went wrong while fetching cart items: " + error.message);
+      setError(error.response?.data?.message || error.message);
+    }
+  };
+  useEffect(()=>{
+    cartlength()
+  },[cartlength])
+
+  
+  
 
   return (
     <AuthContext.Provider
@@ -159,6 +191,8 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         loading,
         error,
         responsedata,
+        cart,
+        cartlength,
         handleChange,
         Signup,
         Signin,

@@ -59,7 +59,7 @@ const CheckOut = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[var(--primary-color)]/10 backdrop-blur-md flex justify-center items-center">
+    <div className="min-h-screen bg-gray-500/10 backdrop-blur-md flex justify-center items-center">
       <div className="w-full max-w-md p-8 bg-white rounded-xl shadow-lg mx-2 md:mx-0">
         <h2 className="text-2xl font-semibold text-center mb-6">CheckOut</h2>
 
@@ -72,7 +72,7 @@ const CheckOut = () => {
             <select
               id="addressSelect"
               onChange={handleAddressSelect}
-              className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]"
+              className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500"
             >
               <option value="">Select an Address</option>
               {data.address.map((addr: any, index: number) => (
@@ -96,7 +96,7 @@ const CheckOut = () => {
                   name="address"
                   value={formdata.address}
                   onChange={handleChange}
-                  className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]"
+                  className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500"
                   required
                 />
               </div>
@@ -110,7 +110,7 @@ const CheckOut = () => {
                   name="landmark"
                   value={formdata.landmark}
                   onChange={handleChange}
-                  className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]"
+                  className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500"
                   required
                 />
               </div>
@@ -124,7 +124,7 @@ const CheckOut = () => {
                   name="city"
                   value={formdata.city}
                   onChange={handleChange}
-                  className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]"
+                  className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500"
                   required
                 />
               </div>
@@ -138,7 +138,7 @@ const CheckOut = () => {
                   name="pincode"
                   value={formdata.pincode}
                   onChange={handleChange}
-                  className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]"
+                  className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500"
                   required
                   maxLength={6}
                 />
@@ -147,7 +147,7 @@ const CheckOut = () => {
               <div className="flex justify-center">
                 <button
                   type="submit"
-                  className="text-white w-full px-5 py-2 bg-[var(--primary-color)] hover:bg-[var(--primary-color)] transform translate-all duration-300 rounded-full"
+                  className="text-white w-full px-5 py-2 bg-gray-500 hover:bg-gray-500 transform translate-all duration-300 rounded-full"
                 >
                   Add Address
                 </button>
@@ -163,14 +163,14 @@ const CheckOut = () => {
             <input
               type="text"
               placeholder="Upi Id"
-              className="mt-1 mb-3 block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary-color)]"
+              className="mt-1 mb-3 block w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-gray-500"
               required
             />
           </div>
           <div className="flex justify-center">
             <button
               onClick={() => navigate("/")}
-              className="py-2 px-4 bg-[var(--primary-color)] hover:bg-[var(--primary-color)] transform translate-all duration-300 w-full rounded-full text-white"
+              className="py-2 px-4 bg-gray-500 hover:bg-gray-500 transform translate-all duration-300 w-full rounded-full text-white"
             >
               Place Order
             </button>

@@ -2,33 +2,24 @@ import { FaCartPlus } from "react-icons/fa6";
 import { useNavigate } from "react-router-dom";
 import { FaHome } from "react-icons/fa";
 import { useAuth } from "../hooks/useAuth";
-import { useEffect, useState } from "react";
-import useFetch from "../hooks/useFetch";
+import { useEffect } from "react";
 
 const Navbar = () => {
   const navigation = useNavigate();
-  const [cartlength, setCartLength] = useState<number|string>('')
-  const { isAuthenticated } = useAuth();
-
+  const { isAuthenticated,cart, cartlength } = useAuth();
   const handlelogin = () => {
     navigation("/login");
   };
 
-  const {data,fetchdata} = useFetch({url:`${import.meta.env.VITE_BACKEND_URL}/cartitems`})
+  console.log(cart)
+ useEffect(()=>{
+  cartlength()
+ },[cart])
 
-
-
-  useEffect(()=>{
-   if(data && data.length !== undefined){
-    setCartLength(data.length)
-    console.log(data.length)
-  }
-  // fetchdata()
-  },[data,isAuthenticated])
 
   return (
     <div
-      className=" h-12 w-full bg-[var(--primary-color)] text-white sticky top-0
+      className=" h-12 w-full bg-black text-white sticky top-0
      left-0 z-50 flex justify-between px-2 md:px-32 2xl:px-64 items-center"
     >
       <div>
@@ -66,9 +57,9 @@ const Navbar = () => {
           <p>
             <FaCartPlus />
           </p>
-          {cartlength ? (
+          {cart ? (
           <p className="w-5 h-5 absolute top-[0.15rem] z-60 text-sm font-normal ml-1 md:ml-3 rounded-full bg-gray-400/50 backdrop-blur-md flex items-center justify-center">
-            {cartlength}
+            {cart}
           </p>
 
           ):('')}

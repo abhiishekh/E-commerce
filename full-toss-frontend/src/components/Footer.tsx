@@ -2,7 +2,7 @@
 
 const Footer = () => {
   return (
-    <div className="h-auto w-full bg-[var(--primary-color)] left-0 bottom-0 text-white pt-4 flex flex-col items-center ">
+    <div className="h-auto w-full bg-black left-0 bottom-0 text-white pt-4 flex flex-col items-center ">
       <div className="w-full md:w-4/5 px-2 md:px-32 flex justify-center flex-col md:flex-row items-center gap-10 ">
         
         {/* Teams Section */}

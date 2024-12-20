@@ -102,7 +102,7 @@ const CartPage = () => {
           </div>
           <div className="flex items-center justify-center sticky top-16 z-20">
             <button
-              className="bg-[var(--primary-color)] backdrop-blur-md hover:bg-[var(--primary-color)] transform translate-all duration-300 px-20 py-2 rounded-full text-white font-semibold text-xl"
+              className="bg-[#953FE6]/80 backdrop-blur-md hover:bg-[#953FE6] transform translate-all duration-300 px-20 py-2 rounded-full text-white font-semibold text-xl"
               onClick={() => navigate('/checkout')}
             >
               Checkout

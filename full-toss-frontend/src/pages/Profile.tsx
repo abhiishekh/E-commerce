@@ -28,7 +28,7 @@ const Profile = () => {
       if(Error)return <div>Error: {Error}</div>
 
   return (
-    <div className='w-full  min-h-screen bg-[var(--primary-color)]/10 flex justify-center'>
+    <div className='w-full  min-h-screen bg-gray-500/10 flex justify-center'>
         <div className='mx-2 bg-transparent h-auto w-full md:w-1/2 flex flex-col '>
            <div className='w-full flex flex-col items-center mt-10 '>
             
