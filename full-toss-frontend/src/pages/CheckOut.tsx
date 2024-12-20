@@ -57,7 +57,7 @@ const CheckOut = () => {
   const handleAddressSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedAddress(e.target.value);
   };
-
+console.log(selectedAddress)
   return (
     <div className="min-h-screen bg-gray-500/10 backdrop-blur-md flex justify-center items-center">
       <div className="w-full max-w-md p-8 bg-white rounded-xl shadow-lg mx-2 md:mx-0">
