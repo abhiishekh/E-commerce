@@ -1,5 +1,5 @@
 // import React from 'react'
-import newsletter from '../assets/images/newsletter-bg.jpeg'
+// import newsletter from '../assets/images/newsletter-bg.jpeg'
 const Footer = () => {
   return (
     <div

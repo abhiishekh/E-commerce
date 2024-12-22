@@ -1,11 +1,8 @@
 import virat from "../assets/images/banner-img.png";
 import rcbjersey from "../assets/images/rcbjersey.png";
-import HeroCard from "../components/HeroCard";
 import ProductCard from "../components/ProductCard";
 import useFetch from "../hooks/useFetch";
 import { useEffect, useRef } from "react";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
 import { useNavigate } from "react-router-dom";
 
 
@@ -50,14 +47,7 @@ const Home = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const container = useRef()
-  useGSAP(()=>{
-    gsap.from('.conl',{
-      y:-30,
-      delay:1,
-      duration:1
-    })
-  },[])
+
   
 
   if (Error) return <div className="w-full min-h-screen text-center">Page Not Found: {Error}</div>;
