@@ -48,7 +48,7 @@ const ProductCard: React.FC<List> = ({ _id, title, price, mrp, imageURL }) => {
 
   // Navigate to product details page
   const handleClick = () => {
-    navigate('/productdetails', { state: { id: _id } }); // Pass the actual _id here
+    navigate('/productdetails', { state: { id: _id } });
   };
 
   return (

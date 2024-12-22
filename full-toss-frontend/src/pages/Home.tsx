@@ -5,7 +5,6 @@ import useFetch from "../hooks/useFetch";
 import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
-
 interface itemType {
   _id: string | null | undefined;
   title: string;

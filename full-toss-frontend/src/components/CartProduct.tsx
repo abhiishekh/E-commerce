@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { useAuth } from "../hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 
 interface List {
   title: string;
@@ -16,6 +17,7 @@ interface List {
 
 const CartProduct: React.FC<List> = ({ _id, title, price, mrp, imageURL, stocks, quantity, onQuantityChange, onRemove }) => {
   const {cartlength} = useAuth()
+  const navigate = useNavigate()
   const [loading, setLoading] = useState<boolean>(false);
   const updatedPrice = price * quantity;
   const updatedMrp = mrp * quantity;
@@ -78,11 +80,15 @@ const CartProduct: React.FC<List> = ({ _id, title, price, mrp, imageURL, stocks,
     }
   };
 
+  const handleClick =()=>{
+    navigate('/productdetails', { state: { id: _id } });
+  }
+
 
   return (
     <div className="bg-white m-2 rounded-lg p-3 lg:p-5 flex justify-between items-center">
       <div className="flex gap-4">
-        <div className="w-32 h-32 rounded-sm">
+        <div className="w-32 h-32 rounded-sm" onClick={handleClick}>
           <img src={imageURL} alt={title} className="w-full h-full object-contain" />
         </div>
         <div className="flex flex-col">
