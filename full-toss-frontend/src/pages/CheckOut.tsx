@@ -14,9 +14,9 @@ const CheckOut = () => {
   const [isaddress, setIsAddress] = useState<boolean>(false);
   const [selectedAddress, setSelectedAddress] = useState<string | null>(null);
   const userId = localStorage.getItem("id");
-  const { data } = useFetch({ url: `${import.meta.env.VITE_BACKEND_URL}/user/${userId}` });
+  const { data , loading, fetchdata} = useFetch({ url: `${import.meta.env.VITE_BACKEND_URL}/user/${userId}` });
 
-  const fetchdata = async () => {
+  const fetchData = async () => {
     try {
       const response = await axios.post(
         `${import.meta.env.VITE_BACKEND_URL}/user/address/${userId}`,
@@ -43,7 +43,8 @@ const CheckOut = () => {
       alert("Please fill in all the fields.");
       return;
     }
-    fetchdata();
+      fetchData();
+      fetchdata()
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -149,7 +150,8 @@ console.log(selectedAddress)
                   type="submit"
                   className="text-white w-full px-5 py-2 bg-gray-500 hover:bg-gray-500 transform translate-all duration-300 rounded-full"
                 >
-                  Add Address
+                  {loading ? ('Adding address....'):('Add Address')}
+                  {/* Add Address */}
                 </button>
               </div>
             </form>

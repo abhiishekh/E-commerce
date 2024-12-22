@@ -1,9 +1,12 @@
 // import React from 'react'
-
+import newsletter from '../assets/images/newsletter-bg.jpeg'
 const Footer = () => {
   return (
-    <div className="h-auto w-full bg-black left-0 bottom-0 text-white pt-4 flex flex-col items-center ">
-      <div className="w-full md:w-4/5 px-2 md:px-32 flex justify-center flex-col md:flex-row items-center gap-10 ">
+    <div
+      className="h-auto w-full bg-black/90 left-0 bottom-0 text-white pt-4 flex flex-col items-center bg-cover bg-center"
+      // style={{ backgroundImage: `url(${newsletter})` }} // Correctly apply the background image
+    >
+      <div className="w-full  md:w-4/5 px-2 md:px-32 flex justify-center flex-col md:flex-row items-center gap-10 ">
         
         {/* Teams Section */}
         <div className="w-1/3">

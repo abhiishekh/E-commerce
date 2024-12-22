@@ -12,18 +12,17 @@ interface List {
 }
 
 const ProductCard: React.FC<List> = ({ _id, title, price, mrp, imageURL }) => {
-  const {cartlength} = useAuth();
-  const navigator = useNavigate()
+  const { cartlength } = useAuth();
+  const navigate = useNavigate();
   const [loading, setLoading] = useState<boolean>(false);
   const discount = Math.round((parseInt(mrp) - parseInt(price)) / parseInt(mrp) * 100);
 
-  
+  // Handle adding to cart
   const handleCart = async () => {
     const token = localStorage.getItem('token');
     if (!token) {
-      // console.log("Token not available");
-      alert("login to add to cart");
-      navigator('/login')
+      alert("Login to add to cart");
+      navigate('/login');
       return;
     }
 
@@ -42,24 +41,31 @@ const ProductCard: React.FC<List> = ({ _id, title, price, mrp, imageURL }) => {
       await cartlength();
     } catch (error: any) {
       console.error("Error adding product to cart:", error.message || error);
-      // alert('Failed to add product to cart. Please try again.');
     } finally {
       setLoading(false);
     }
   };
 
+  // Navigate to product details page
+  const handleClick = () => {
+    navigate('/productdetails', { state: { id: _id } }); // Pass the actual _id here
+  };
+
   return (
-    <div className="w-64 sm:w-48 h-auto md:w-64 bg-white rounded-lg p-2">
-      <div className="flex justify-center bg-[#F7F7F7] hover:scale-105 transform translate-all duration-300 ease-in-out ">
-        <div className="w-44 md:w-48 h-64 flex justify-center rounded-lg">
-          <img
-            src={imageURL}
-            alt={title}
-            className="w-full h-full object-contain"
-          />
+    <div onClick={handleClick} className="w-80 sm:w-64 h-auto md:w-80 rounded-lg p-2">
+      <div className="w-full bg-white rounded-sm hover:scale-105 transform translate-all duration-300 ease-in-out">
+        <div className="flex justify-center">
+          <div className="w-44 md:w-48 h-64 flex justify-center rounded-lg">
+            <img
+              src={imageURL}
+              alt={title}
+              className="w-full h-full object-contain"
+            />
+          </div>
         </div>
       </div>
-      <div className="my-3 flex justify-between">
+
+      <div className="my-2 flex justify-between">
         <h1 className="font-medium text-sm capitalize">{title}</h1>
         <div className="flex items-center gap-2 text-sm">
           <div className="flex gap-1">
@@ -69,11 +75,11 @@ const ProductCard: React.FC<List> = ({ _id, title, price, mrp, imageURL }) => {
           <h3 className="text-Rcb-red">-{discount}%</h3>
         </div>
       </div>
+
       <div className="w-full ">
         <button
-          className="w-full rounded-md mt-2 py-1 px-2 bg-[#4D03DF]/80 text-white font-semibold hover:bg-[#4D03DF] transform transition-all duration-300 ease-in-out"
+          className="w-full rounded-md py-2 px-2 bg-[#4D03DF]/80 text-white font-semibold hover:bg-[#4D03DF] transform transition-all duration-300 ease-in-out"
           onClick={handleCart}
-         
         >
           {loading ? 'Adding...' : 'Add to cart'}
         </button>

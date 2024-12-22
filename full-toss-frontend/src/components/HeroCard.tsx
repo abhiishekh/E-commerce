@@ -4,7 +4,7 @@ import rcbjersey from '../assets/images/rcbjersey.png'
 
 const HeroCard = () => {
   return (
-    <div className='w-44 h-full md:w-64 bg-white rounded-lg p-2'>
+    <div className='w-96 h-full md:w-80 bg-white rounded-lg p-2'>
       <h1 className='font-medium text-md capitalize'>Jersey</h1>
       <div className='flex justify-center'>
 

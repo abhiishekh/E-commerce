@@ -16,10 +16,11 @@ const Navbar = () => {
   cartlength()
  },[cart])
 
+  
 
   return (
     <div
-      className=" h-12 w-full bg-black text-white sticky top-0
+      className=" nav h-12 w-full bg-black text-white sticky top-0
      left-0 z-50 flex justify-between px-2 md:px-32 2xl:px-64 items-center"
     >
       <div>

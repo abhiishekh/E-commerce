@@ -82,7 +82,7 @@ const CartProduct: React.FC<List> = ({ _id, title, price, mrp, imageURL, stocks,
   return (
     <div className="bg-white m-2 rounded-lg p-3 lg:p-5 flex justify-between items-center">
       <div className="flex gap-4">
-        <div className="w-32 h-32 bg-gray-200 rounded-sm">
+        <div className="w-32 h-32 rounded-sm">
           <img src={imageURL} alt={title} className="w-full h-full object-contain" />
         </div>
         <div className="flex flex-col">
