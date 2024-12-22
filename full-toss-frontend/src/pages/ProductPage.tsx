@@ -55,7 +55,7 @@ const ProductPage: React.FC = () => {
           {/* details  */}
           <div className="mt-0 md:mt-12 w-1/2 flex flex-col gap-2 md:gap-5">
             <h1 className="font-bold text-3xl">{data.title}</h1>
-            <h1>{data.description}</h1>
+            {/* <h1>{data.description}</h1> */}
             <div className="">
               <div className="flex gap-2 items-center">
 
