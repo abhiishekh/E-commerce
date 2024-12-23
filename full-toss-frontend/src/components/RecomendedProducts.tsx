@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import speaker from '../assets/images/speaker-prod-1.webp'
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+// import axios from 'axios';
 
 const RecomendedProducts = () => {
-  const [loading, setLoading] = useState<boolean>(false)
-  const navigate = useNavigate()
+  // const [loading, setLoading] = useState<boolean>(false)
+  // const navigate = useNavigate()
     // const handleCart = async () => {
     //   const token = localStorage.getItem('token');
     //   if (!token) {
@@ -50,7 +50,9 @@ const RecomendedProducts = () => {
             </div>
         </div>
         <button className='p-2 text-white bg-purple-700/80 hover:bg-purple-700 rounded-md'>
-        {loading? ('Adding...'):('Add to cart')}</button>
+        {/* {loading? ('Adding...'):('Add to cart')} */}
+        Add to Cart
+        </button>
     </div>
 
   )
