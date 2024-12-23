@@ -1,6 +1,6 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 import speaker from '../assets/images/speaker-prod-1.webp'
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 // import axios from 'axios';
 
 const RecomendedProducts = () => {
