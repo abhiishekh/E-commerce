@@ -52,39 +52,23 @@ const ProductCard: React.FC<List> = ({ _id, title, price, mrp, imageURL }) => {
   };
 
   return (
-    <div onClick={handleClick} className="w-80 sm:w-64 h-auto md:w-80 rounded-lg p-2">
-      <div className="w-full bg-white rounded-sm hover:scale-105 transform translate-all duration-300 ease-in-out">
-        <div className="flex justify-center">
-          <div className="w-44 md:w-48 h-64 flex justify-center rounded-lg">
-            <img
-              src={imageURL}
-              alt={title}
-              className="w-full h-full object-contain"
-            />
-          </div>
-        </div>
-      </div>
-
-      <div className="my-2 flex justify-between">
-        <h1 className="font-medium text-sm capitalize">{title}</h1>
-        <div className="flex items-center gap-2 text-sm">
-          <div className="flex gap-1">
-            <h3 className="font-semibold text-sm">₹{price}</h3>
-            <h3 className="text-gray-400 line-through text-sm">₹{mrp}</h3>
-          </div>
-          <h3 className="text-Rcb-red">-{discount}%</h3>
-        </div>
-      </div>
-
-      <div className="w-full ">
-        <button
-          className="w-full rounded-md py-2 px-2 bg-[#4D03DF]/80 text-white font-semibold hover:bg-[#4D03DF] transform transition-all duration-300 ease-in-out"
-          onClick={handleCart}
-        >
-          {loading ? 'Adding...' : 'Add to cart'}
-        </button>
-      </div>
+    <div  className='w-44 sm:w-60 flex flex-col gap-2'>
+    <div onClick={handleClick} className='h-full w-full bg-white rounded-md hover:scale-105 duration-300 transform transition-all'>
+            <img src={imageURL} alt="image" className='h-full w-full object-contain' />
     </div>
+    <div className='flex justify-between items-center'>
+        <h1>{title}</h1>
+        <div className='flex gap-2 items-center'>
+            <div className='flex gap-1 items-center'>
+                <p className=" text-sm  font-bold">{price}</p>
+                <p className=" text-sm font-bold text-gray-700 line-through">{mrp}</p>
+            </div>
+            <p className="text-red-500">-{discount}%</p>
+        </div>
+    </div>
+    <button onClick={handleCart} className='p-2 text-white bg-purple-700/80 hover:bg-purple-700 rounded-md'>
+    {loading? ('Adding...'):('Add to cart')}</button>
+</div>
   );
 };
 

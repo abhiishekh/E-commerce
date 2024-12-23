@@ -100,13 +100,15 @@ const ProductPage: React.FC = () => {
       </div>
       {/* //RecomendedProducts */}
 
-      <div className=" p-2 w-full md:w-5/6 2xl:w-3/5 mx-auto h-full flex flex-col  gap-10 my-4">
+      <div className=" p-2 w-full md:w-5/6 2xl:w-3/5 mx-auto h-full flex flex-col  gap-10 my-4 ">
         <h1 className="font-bold text-3xl ">Similar Products</h1>
         <div className="flex flex-wrap gap-10 mx-auto justify-center" >
 
           <RecomendedProducts />
           <RecomendedProducts />
           <RecomendedProducts />
+          <RecomendedProducts />
+
         </div>
       </div>
     </>
