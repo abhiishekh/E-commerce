@@ -4,14 +4,6 @@ import { useEffect, useState } from "react";
 interface URL {
   url: string;
 }
-interface productType{
-  title:string;
-  price:number;
-  mrp:number;
-  description:string;
-  imageUrl:string | null
-  _id: string | null | undefined
-}
 
 const useFetch = ({ url }:URL) => {
   const [responseData, setResponseData] = useState<any>([]);

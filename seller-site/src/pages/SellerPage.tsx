@@ -1,5 +1,4 @@
-import React from 'react'
-import UserDetails from '../components/Details'
+import SellerDetails from '../components/SellerDetails'
 
 const SellerPage = () => {
   return (
@@ -25,10 +24,7 @@ const SellerPage = () => {
         <h1 className='font-bold text-3xl mb-8 '>All Sellers</h1>
         <div className='flex flex-col gap-10'>
 
-        <UserDetails/>
-        <UserDetails/>
-        <UserDetails/>
-        <UserDetails/>
+        <SellerDetails/>
           
         </div>
       </div>
