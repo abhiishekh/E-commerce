@@ -7,7 +7,7 @@ interface List {
   title: string;
   price: number;
   mrp: number;
-  imageURL: string;
+  imageUrl: string;
   _id: string | null | undefined;
   stocks: number;
   quantity: number;
@@ -15,7 +15,7 @@ interface List {
   onRemove: (itemId: string) => void;
 }
 
-const CartProduct: React.FC<List> = ({ _id, title, price, mrp, imageURL, stocks, quantity, onQuantityChange, onRemove }) => {
+const CartProduct: React.FC<List> = ({ _id, title, price, mrp, imageUrl, stocks, quantity, onQuantityChange, onRemove }) => {
   const {cartlength} = useAuth()
   const navigate = useNavigate()
   const [loading, setLoading] = useState<boolean>(false);
@@ -84,12 +84,12 @@ const CartProduct: React.FC<List> = ({ _id, title, price, mrp, imageURL, stocks,
     navigate('/productdetails', { state: { id: _id } });
   }
 
-
+  const fallback = 'https://google.com'
   return (
     <div className="bg-white m-2 rounded-lg p-3 lg:p-5 flex justify-between items-center">
       <div className="flex gap-4">
         <div className="w-32 h-32 rounded-sm" onClick={handleClick}>
-          <img src={imageURL} alt={title} className="w-full h-full object-contain" />
+          <img src={imageUrl ? imageUrl :fallback} alt={title} className="w-full h-full object-contain" />
         </div>
         <div className="flex flex-col">
           <h1 className="font-semibold capitalize">{title}</h1>

@@ -36,7 +36,7 @@ const RecomendedProducts = () => {
   
   return (
     <div className='w-40 sm:w-60 flex flex-col gap-2'>
-        <div className='h-full w-full bg-white rounded-md hover:scale-105 duration-300 transform transition-all'>
+        <div className='h-40 sm:h-64 w-full bg-neutral-300 rounded-md hover:scale-105 duration-300 transform transition-all'>
                 <img src={speaker} alt="speaker" className='h-full w-full object-contain' />
         </div>
         <div className='flex justify-between items-center'>

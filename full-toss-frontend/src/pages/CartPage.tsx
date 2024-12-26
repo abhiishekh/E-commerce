@@ -11,7 +11,7 @@ interface ItemType {
   title: string;
   price: number;
   mrp: number;
-  imageURL: string;
+  imageUrl: string;
   stocks: number;
 }
 
@@ -61,6 +61,7 @@ const CartPage = () => {
       const finalItemPrice = totalItemPrice + calculatedDeliveryCharge;
       setItemPrice(finalItemPrice);
     }
+    console.log(data)
   }, [data, quantities, itemPrice, deliveryCharge]);
 
   const handleQuantityChange = (itemId: string, newQuantity: number) => {
@@ -119,7 +120,7 @@ const CartPage = () => {
                   title={item.title}
                   price={item.price}
                   mrp={item.mrp}
-                  imageURL={item.imageURL}
+                  imageUrl={item.imageUrl}
                   stocks={item.stocks}
                   quantity={quantities[item._id || ''] || 1}
                   onQuantityChange={handleQuantityChange}

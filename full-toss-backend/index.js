@@ -16,7 +16,7 @@ mongoose.connect(MONGO_URL).then(()=>console.log("Database connected")).catch((e
 const app = express()
 app.use(express.json())
 app.use(cors({
-    origin:['http://localhost:5173','https://shopping-chi-seven.vercel.app']
+    origin:['http://localhost:5173','http://localhost:5174','https://shopping-chi-seven.vercel.app']
 }));
 
 app.use('/',userRoute)

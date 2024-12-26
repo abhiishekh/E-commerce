@@ -1,91 +1,89 @@
-import express from 'express'
-import { ProductModule } from '../db/db.js'
+import express from 'express';
+import { ProductModule } from '../db/db.js';
 
-const route = express.Router()
+const route = express.Router();
 
-route.post('/product',async function(req,res){
-    const {
-        title,
-        description,
-        mrp,
-        price,
-        imageUrl,
-        stocks
-    } = req.body
+route.post('/product', async (req, res) => {
+  const { title, description, price, mrp, stocks, imageUrl } = req.body;
 
-    try {
-        const response = await ProductModule.create({
-            title,
-            description,
-            mrp,
-            price,
-            imageUrl,
-            stocks
-        })
-        if(!response){
-            return res.status(304).json({
-                message:"Could not proceed, Bad response!"
-            })
-        }
-        res.json({
-            message:"success",
-            response
-            
-        })
+  if (!title || !description || !price || !mrp || !stocks || !imageUrl) {
+    return res.status(400).send({ error: 'All fields are required' });
+  }
 
-    } catch (error) {
-        console.log("An error occured " + error)
-        const errormsg = error.errmsg
-        return res.status(500).json({
-            errormsg
-        })
+  try {
+    console.log("shi hai yha tk")
+   const response = await ProductModule.create({
+    title,
+    price,
+    mrp,
+    stocks,
+    description,
+    imageUrl
+   })
+   if(!response){
+    console.log("could not post")
+    return res.status(400).json({
+      message:"not posted"
+    })
+   }
+   console.log("data posted" + response)
+    res.status(200).send({ message: 'Product added successfully' });
+  } catch (error) {
+    console.error('Error saving product:', error);
+    res.status(500).send({ error: 'Failed to add product' });
+  }
+});
+
+route.get('/product/:id', async (req, res) => {
+  const productId = req.params.id;
+
+  try {
+    const response = await ProductModule.findOne({
+      _id: productId,
+    });
+
+    if (!response) {
+      return res.status(400).json({
+        message: "Data not found",
+      });
     }
-    
-})
 
-route.get('/product/:id',async function(req,res){
-    const id = req.params.id
+    res.status(200).json({
+      response,
+    });
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    res.status(500).json({ message: 'Error fetching data' });
+  }
+});
 
-    try {
-        const response = await ProductModule.findOne({
-            _id:id
-        })
-        if(!response){
-            return res.status(400).json({
-                message:"product not found"
-            })
-        }
-        res.json({
-            response
-        })
-    } catch (error) {
-        console.log("An Error occured " + error)
-        const errormsg = error.errmsg
-        return res.status(500).json({
-            errormsg
-        })
+route.get('/product', async (req, res) => {
+  try {
+    const products = await ProductModule.find();
+
+    if (!products || products.length === 0) {
+      return res.status(400).json({
+        message: "No data found",
+      });
     }
-})
-route.get('/product',async function(req,res){
-    
-    try {
-        const response = await ProductModule.find()
-        if(!response){
-            return res.status(404).json({
-                message:"products not fund"
-            })
-        }
-        res.json({
-            response
-        })
-        
-    } catch (error) {
-        console.log("Something went wrong " + error)
-        const errormsg = error.errmsg
-        return res.status(500).json({
-            errormsg
-        })
-    }
-})
 
-export default route
+    const response = products.map((item) => {
+      return {
+        ...item.toObject(),
+        imageUrl: item.imageUrl, 
+      };
+    });
+
+    return res.status(200).json({
+      response,
+    });
+  } catch (error) {
+    console.log("Something went wrong: " + error);
+    return res.status(500).json({
+      message: "Something went wrong, please try again later",
+      error: error.message,
+    });
+  }
+});
+
+export default route;

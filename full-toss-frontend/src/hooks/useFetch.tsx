@@ -4,6 +4,14 @@ import { useEffect, useState } from "react";
 interface URL {
   url: string;
 }
+interface productType{
+  title:string;
+  price:number;
+  mrp:number;
+  description:string;
+  imageUrl:string | null
+  _id: string | null | undefined
+}
 
 const useFetch = ({ url }:URL) => {
   const [responseData, setResponseData] = useState<any>([]);
@@ -19,6 +27,8 @@ const useFetch = ({ url }:URL) => {
           token:token
         }
       })
+      // console.log(response)
+      console.log(response.data.arr)
        
       if (!response || !response.data) {
         console.log("data not found");
@@ -48,6 +58,7 @@ const useFetch = ({ url }:URL) => {
         console.log('no data available')
         setError("currently no data available")
       }
+      console.log(responseData)
     } catch (error) {
       console.log("error while fetching data " + error);
       setError(" failed to fetch data");

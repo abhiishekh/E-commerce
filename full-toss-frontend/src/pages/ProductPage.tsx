@@ -49,8 +49,8 @@ const ProductPage: React.FC = () => {
       <div className="w-full md:w-5/6 2xl:w-3/5 mx-auto mt-12 h-full flex flex-wrap gap-8 justify-center py-1 px-3">
         <div className="flex w-full h-full gap-2 md:gap-12">
           {/* img */}
-          <div className="w-1/2 h-[260px] md:h-[500px] p-5 bg-white rounded-lg">
-            <img src={data.imageURL} alt="" className="h-full w-full object-contain" />
+          <div className="w-1/2 h-[260px] md:h-[500px] p-1 sm:p-5 bg-neutral-300 rounded-lg">
+            <img src={data.imageUrl} alt="" className="h-full w-full object-contain" />
           </div>
           {/* details  */}
           <div className="mt-0 md:mt-12 w-1/2 flex flex-col gap-2 md:gap-5">
@@ -102,7 +102,7 @@ const ProductPage: React.FC = () => {
 
       <div className=" p-2 w-full md:w-5/6 2xl:w-3/5 mx-auto h-full flex flex-col  gap-10 my-4 ">
         <h1 className="font-bold text-3xl ">Similar Products</h1>
-        <div className="flex flex-wrap gap-10 mx-auto justify-center" >
+        <div className="flex flex-wrap gap-6 mx-auto justify-center" >
 
           <RecomendedProducts />
           <RecomendedProducts />
