@@ -23,17 +23,17 @@ const Home = () => {
   return (
     <div className="w-full min-h-screen flex justify-center">
       <div className="w-full h-full flex flex-col bg-[#EAEDED]">
-        <div className="w-full h-screen bg-gradient-to-l from-[#4D03DF] to-[#953FE6] flex flex-col justify-center">
-          <div className="w-full md:w-5/6 2xl:w-3/5 mx-auto h-1/2 ">
-            <div className="flex justify-center md:justify-between mx-2 lg:mx-12">
-            <div className="w-full flex flex-col items-center justify-center md:w-1/2 absolute top-32 md:static ">
+        <div className="w-full h-screen bg-gradient-to-l from-[#4D03DF] to-[#953FE6] flex flex-col justify-center items-center">
+          <div className="w-full md:w-5/6 2xl:w-3/5 mx-auto h-4/5 ">
+            <div className=" w-full h-full flex justify-center md:justify-between lg:mx-12">
+            <div className="w-full flex flex-col items-start justify-center px-4 md:w-1/2 absolute top-32 md:static ">
 
-              <h1 className=" m-2 w-full h-full text-5xl md:text-7xl text-white font-semibold px-2 pt-10 
-              flex items-center justify-center">
+              <h1 className="text-5xl md:text-7xl text-white font-semibold px-2
+              flex items-start justify-start">
                 Welcome to shoppi Store!
               </h1>
               <p className="text-white mt-2">Shop our exclusive items
-              at unbeatable prices!</p>
+              at unbeatable prices!</p> 
               <div className="flex gap-4  text-white mt-8">
 
                 <button  className="px-4 py-3 bg-transparent border-[1px] border-white rounded-md">Read More </button>

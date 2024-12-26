@@ -21,7 +21,7 @@ const SideBar = () => {
           style={{ transform: isToggled ? 'translateX(0)' : 'translateX(-100%)', opacity: isToggled ? 1 : 0 }}
         >
           <h1 className="font-bold text-3xl flex justify-center py-5 mt-16"
-          onClick={()=>navigate('/') }>Abhishek</h1>
+          onClick={()=>navigate('/') }>Shoppi!</h1>
           <div className="w-full flex justify-center">
             <div className="flex flex-col items-start gap-4">
               <h2 className="font-semibold text-xl capitalize hover:cursor-pointer px-2"

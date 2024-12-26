@@ -3,7 +3,7 @@ import React, { useState } from "react";
 
 interface ProductType {
   title: string;
-  imageUrl: string | null; 
+  imageUrl: string | null;
   price: number | string;
   mrp: number | string;
   stocks: number | string;
@@ -11,6 +11,7 @@ interface ProductType {
 }
 
 const AddProduct = () => {
+  const [loading, setLoading] = useState<boolean>(false)
   const [formdata, setFormData] = useState<ProductType>({
     title: "",
     imageUrl: null,
@@ -23,7 +24,7 @@ const AddProduct = () => {
   function convertToBase64(file: File): Promise<string> {
     return new Promise((resolve, reject) => {
       const fileReader = new FileReader();
-      fileReader.readAsDataURL(file); 
+      fileReader.readAsDataURL(file);
       fileReader.onload = () => {
         resolve(fileReader.result as string);
       };
@@ -41,7 +42,7 @@ const AddProduct = () => {
         const base64Image = await convertToBase64(inputElement.files[0]);
         setFormData((prevData) => ({
           ...prevData,
-          imageUrl: base64Image, 
+          imageUrl: base64Image,
         }));
       }
     } else {
@@ -54,17 +55,28 @@ const AddProduct = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-      try {
-        const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/product`,formdata)
-        if(!response){
-          console.log("could not send the request")
-          return
-        }
-        console.log(response)
-      } catch (error) {
-        console.log(error)
+    try {
+      setLoading(true)
+      const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/product`, formdata)
+      if (!response) {
+        console.log("could not send the request")
+        return
       }
-    console.log(formdata)
+      // console.log(response)
+      setFormData({
+        title: "",
+        imageUrl: null,
+        price: '',
+        mrp: '',
+        stocks: '',
+        description: "",
+      })
+      setLoading(false)
+    } catch (error) {
+      console.log(error)
+      setLoading(false)
+    }
+    // console.log(formdata)
   };
 
   return (
@@ -163,7 +175,7 @@ const AddProduct = () => {
             {/* Submit Button */}
             <div className="flex justify-center items-center">
               <button type="submit" className="p-2 my-4 w-1/2 text-white font-medium text-xl bg-blue-600 rounded-lg">
-                Submit
+                {loading? 'Adding..':'Add Product'}
               </button>
             </div>
           </form>

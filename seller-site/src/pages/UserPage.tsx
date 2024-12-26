@@ -32,7 +32,6 @@ const UserPage = () => {
     }
     console.log(res.data.response.length)
     setProduct(res.data.response.length)
-    // setAllProduct(res.data.response)
   }
   useEffect(()=>{
     fetchUserData()
@@ -47,7 +46,7 @@ const UserPage = () => {
         <h1 className='font-semibold text-2xl'>Users</h1>
         </div>
         <div className='bg-[#D9D9D9] rounded-md py-2 px-3 w-36 md:w-64 flex flex-col items-center'>
-        <h1 className='font-bold text-3xl'>23 +</h1>
+        <h1 className='font-bold text-3xl'>0 +</h1>
         <h1 className='font-semibold text-2xl'>Sellers</h1>
 
         </div>

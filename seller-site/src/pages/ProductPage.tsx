@@ -68,7 +68,10 @@ const ProductPage = () => {
     <>
     {
       loading ? (
-        <div> <h1>loading...</h1></div>
+        <div className=" w-full min-h-screen flex items-center justify-center">
+                <div className="w-spinner h-spinner border-4 border-t-4 border-gray-300 border-t-blue-500 rounded-full animate-spin-fast"></div>
+                <p className="ml-4 text-xl">Loading...</p>
+              </div>
       ): (
         <div className="my-12 mx-2 md:mx-12">
       <div className="flex justify-center gap-2 md:gap-12 mt-16 mx-2 sm:m-4 xl:m-12">
@@ -77,7 +80,7 @@ const ProductPage = () => {
           <h1 className="font-semibold text-2xl">Users</h1>
         </div>
         <div className="bg-[#D9D9D9] rounded-md py-2 px-3 w-36 md:w-64 flex flex-col items-center">
-          <h1 className="font-bold text-3xl">23 +</h1>
+          <h1 className="font-bold text-3xl">0 +</h1>
           <h1 className="font-semibold text-2xl">Sellers</h1>
         </div>
         <div className="bg-[#D9D9D9] rounded-md py-2 px-3 w-36 md:w-64 flex flex-col items-center">

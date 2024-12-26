@@ -28,7 +28,7 @@ const Navbar = () => {
           className="hidden lg:block font-medium text-xl cursor-pointer heading"
           onClick={() => navigation("/")}
         >
-          IPL Shopping
+         Shoppi!
         </h1>
         <h1
           className=" lg:hidden text-2xl mr-2"
