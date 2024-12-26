@@ -38,7 +38,7 @@ const ProductPage = () => {
   const fetchProductData = async () => {
     try {
       setLoading(true);
-      const response = await axios.get('http://localhost:3000/api/v1/product');
+      const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/product`);
       console.log(response.data.response)
       if (response.data.response) {
         const userData = response.data.response;

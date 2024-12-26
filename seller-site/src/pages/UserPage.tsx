@@ -12,7 +12,6 @@ interface userType{
 const UserPage = () => {
   const [user, setUser] = useState<userType|null>(null)
   const [userCount, setUserCount] = useState<number|string>()
-
   const [product, setProduct] = useState<number|string>()
 
   const fetchUserData = async()=>{
@@ -31,7 +30,7 @@ const UserPage = () => {
       console.log('No data found')
       return
     }
-    // console.log(res.data.response.length)
+    console.log(res.data.response.length)
     setProduct(res.data.response.length)
     // setAllProduct(res.data.response)
   }
