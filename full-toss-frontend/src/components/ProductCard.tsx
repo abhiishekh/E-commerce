@@ -58,11 +58,11 @@ const ProductCard: React.FC<List> = ({ _id, title, price, mrp, imageUrl }) => {
             <img src={imageUrl ? imageUrl : fallback} alt="image" className='h-full w-full object-contain' />
     </div>
     <div className='flex justify-between items-center'>
-        <h1 className="overflow-hidden w-24 whitespace-nowrap text-ellipsis capitalize">{title}</h1>
+        <h1 className="overflow-hidden w-24 whitespace-nowrap text-ellipsis capitalize">  {title}</h1>
         <div className='flex gap-1 items-center flex-wrap '>
             <div className='flex gap-1 items-center'>
-                <p className=" text-sm  font-medium">{price}</p>
-                <p className=" text-sm font-medium text-gray-700 line-through">{mrp}</p>
+                <p className=" text-sm  font-medium">₹{price}</p>
+                <p className=" text-sm font-medium text-gray-700 line-through">₹{mrp}</p>
             </div>
             <p className="text-red-500 text-sm">-{discount}%</p>
         </div>

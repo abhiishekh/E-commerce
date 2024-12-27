@@ -88,8 +88,8 @@ const CartProduct: React.FC<List> = ({ _id, title, price, mrp, imageUrl, stocks,
   return (
     <div className="bg-white m-2 rounded-lg p-3 lg:p-5 flex justify-between items-center">
       <div className="flex gap-4">
-        <div className="w-32 h-32 rounded-sm" onClick={handleClick}>
-          <img src={imageUrl ? imageUrl :fallback} alt={title} className="w-full h-full object-contain" />
+        <div className="w-32 h-32 rounded-lg" onClick={handleClick}>
+          <img src={imageUrl ? imageUrl :fallback} alt={title} className="w-full h-full object-cover rounded-sm " />
         </div>
         <div className="flex flex-col">
           <h1 className="font-semibold capitalize">{title}</h1>
@@ -98,7 +98,7 @@ const CartProduct: React.FC<List> = ({ _id, title, price, mrp, imageUrl, stocks,
             <h1 className="font-semibold">₹{updatedPrice}</h1>
             <h1 className="font-semibold line-through text-gray-400 text-sm">₹{updatedMrp}</h1>
           </div>
-          <div className="flex items-center gap-4 bg-gray-300 rounded-md text-black font-medium overflow-hidden mt-5 py-1">
+          <div className="w-[100px] flex items-center justify-between gap-4 bg-gray-300 rounded-md text-black font-medium overflow-hidden mt-5 py-1">
             <p className="w-7 h-full flex items-center justify-center hover:cursor-pointer" onClick={handleDecrease}>-</p>
             <p className="text-Rcb-red">{quantity}</p>
             <p className="w-7 h-full flex items-center justify-center hover:cursor-pointer" onClick={handleIncrease}>+</p>

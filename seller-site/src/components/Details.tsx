@@ -22,8 +22,8 @@ const Details: React.FC<List> = ({ title, price, mrp, imageUrl}) => {
           {/* //details  */}
           <div className='flex flex-col justify-start'>
             <h1 className='font-bold text-lg'>{title}</h1>
-            <h1 className='font-medium text-sm'>Price: {price}</h1>
-            <h1 className='font-medium text-sm'>Mrp: {mrp}</h1>
+            <h1 className='font-medium text-sm'>Price: ₹{price}</h1>
+            <h1 className='font-medium text-sm'>Mrp: ₹{mrp}</h1>
           </div>
           {/* //remove button  */}
           <button className='p-2 bg-white rounded-lg'> Remove</button>

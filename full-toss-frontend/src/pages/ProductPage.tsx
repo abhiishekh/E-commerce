@@ -49,8 +49,8 @@ const ProductPage: React.FC = () => {
       <div className="w-full md:w-5/6 2xl:w-3/5 mx-auto mt-12 h-full flex flex-wrap gap-8 justify-center py-1 px-3">
         <div className="flex w-full h-full gap-2 md:gap-12">
           {/* img */}
-          <div className="w-1/2 h-[260px] md:h-[500px] p-1 sm:p-5 bg-neutral-300 rounded-lg">
-            <img src={data.imageUrl} alt="" className="h-full w-full object-contain" />
+          <div className="w-1/2 h-[260px] md:h-[500px] p-1  bg-neutral-300 rounded-lg">
+            <img src={data.imageUrl} alt="" className="h-full w-full object-contain rounded-lg " />
           </div>
           {/* details  */}
           <div className="mt-0 md:mt-12 w-1/2 flex flex-col gap-2 md:gap-5">
@@ -60,13 +60,13 @@ const ProductPage: React.FC = () => {
               <div className="flex gap-2 items-center">
 
                 <h1>Price: </h1>
-                <h1 className="text-sm">{data.price}</h1>
+                <h1 className="text-sm">₹{data.price}</h1>
               </div>
 
               <div className="flex gap-2 items-center">
 
                 <h1>MRP: </h1>
-                <h1 className="line-through text-sm">{data.mrp}</h1>
+                <h1 className="line-through text-sm">₹{data.mrp}</h1>
               </div>
             </div>
             <div className="flex  w-full flex-wrap list-none gap-2">
