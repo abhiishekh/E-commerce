@@ -17,10 +17,10 @@ const app = express()
 app.use(express.json())
 app.use(cors({
     origin:[
-      'http://localhost:5173',
-      'http://localhost:5174',
-     'https://shopping-chi-seven.vercel.app',
-     'https://adminshop-orcin.vercel.app'
+      `${process.env.Local_URL1}`,
+      `${process.env.Local_URL2}`,
+     `${process.env.Live_URL1}`,
+     `${process.env.Live_URL2}`
      ],
      methods:['GET', 'POST', 'PUT', 'DELETE'],
       credentials:true

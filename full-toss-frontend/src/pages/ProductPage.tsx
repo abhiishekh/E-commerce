@@ -1,6 +1,6 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
-import RecomendedProducts from "../components/RecomendedProducts";
+// import RecomendedProducts from "../components/RecomendedProducts";
 import { useAuth } from "../hooks/useAuth";
 import { useState } from "react";
 import axios from "axios";
@@ -100,7 +100,7 @@ const ProductPage: React.FC = () => {
       </div>
       {/* //RecomendedProducts */}
 
-      <div className=" p-2 w-full md:w-5/6 2xl:w-3/5 mx-auto h-full flex flex-col  gap-10 my-4 ">
+      {/* <div className=" p-2 w-full md:w-5/6 2xl:w-3/5 mx-auto h-full flex flex-col  gap-10 my-4 ">
         <h1 className="font-bold text-3xl ">Similar Products</h1>
         <div className="flex flex-wrap gap-6 mx-auto justify-center" >
 
@@ -110,7 +110,7 @@ const ProductPage: React.FC = () => {
           <RecomendedProducts />
 
         </div>
-      </div>
+      </div> */}
     </>
   );
 };

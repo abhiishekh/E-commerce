@@ -1,7 +1,8 @@
 import React, { createContext, useState, useContext, ReactNode, useEffect } from "react";
 import axios from "axios";
+import {jwtDecode} from "jwt-decode";
 
-interface formdata {
+interface FormData {
   username: string;
   name: string;
   email: string;
@@ -13,10 +14,11 @@ interface formdata {
 interface ResponseData {
   token?: string;
   message?: string;
+  id?: string;
 }
 
 interface AuthContextType {
-  formData: formdata;
+  formData: FormData;
   usernameError: string;
   emailError: string;
   phoneError: string;
@@ -39,7 +41,7 @@ interface AuthProviderProps {
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
-  const [formData, setFromdata] = useState<formdata>({
+  const [formData, setFromData] = useState<FormData>({
     username: '',
     name: '',
     email: '',
@@ -55,7 +57,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [usernameError, setUsernameError] = useState<string>('');
   const [emailError, setEmailError] = useState<string>('');
   const [phoneError, setPhoneError] = useState<string>('');
-  const [cart, setCart] = useState<number | string>('')
+  const [cart, setCart] = useState<number | string>(0);
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(!!localStorage.getItem("token"));
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -86,10 +88,21 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       }
     }
 
-    setFromdata({
+    setFromData({
       ...formData,
       [name]: value
     });
+  };
+
+  const isTokenExpired = (token: string | null): boolean => {
+    if (!token) return true;
+    try {
+      const decoded: any = jwtDecode(token);
+      const currentTime = Date.now() / 1000;
+      return decoded.exp < currentTime;
+    } catch (error) {
+      return true;
+    }
   };
 
   const Signup = async () => {
@@ -98,11 +111,11 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     try {
       const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/signup`, formData);
       setResponseData(response.data);
-      localStorage.setItem('token', response.data.token)
-      const id = response.data.id
-      localStorage.setItem('id', id)
-      setIsAuthenticated(true)
-      setFromdata({
+      localStorage.setItem('token', response.data.token);
+      const id = response.data.id;
+      localStorage.setItem('id', id);
+      setIsAuthenticated(true);
+      setFromData({
         username: '',
         name: '',
         email: '',
@@ -123,14 +136,22 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     setError(null);
     try {
       const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/signin`, formData);
-      setResponseData(response.data);
-      const token = response.data.token
-      localStorage.setItem('token', token)
-      const id = response.data.id
-      localStorage.setItem('id', id)
 
-      setIsAuthenticated(true)
-      setFromdata({
+      setResponseData(response.data);
+      const token = response.data.token;
+      localStorage.setItem('token', token);
+      const id = response.data.id;
+      localStorage.setItem('id', id);
+
+      if (isTokenExpired(token)) {
+        localStorage.removeItem('token');
+        setIsAuthenticated(false);
+        setError('Session expired. Please log in again.');
+      } else {
+        setIsAuthenticated(true);
+      }
+
+      setFromData({
         username: '',
         name: '',
         email: '',
@@ -140,45 +161,47 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       });
     } catch (error: any) {
       console.log("Something went wrong " + error.message);
-      setError(error.response?.data?.message || error.message);
+
+      if (error.response && error.response.data && error.response.data.message === 'User not found') {
+        setError('User not found. Please sign up.');
+      } else {
+        setError(error.response?.data?.message || error.message);
+      }
     } finally {
       setLoading(false);
     }
   };
+
   const logout = () => {
-    localStorage.removeItem('token')
-    localStorage.removeItem('id')
-    setIsAuthenticated(false)
-  }
+    localStorage.removeItem('token');
+    localStorage.removeItem('id');
+    setIsAuthenticated(false);
+  };
+
   const cartlength = async () => {
     const token = localStorage.getItem('token');
-    if (!token) {
-      setCart(0); 
+    if (!token || isTokenExpired(token)) {
+      setCart(0);
       return;
-    } 
-  
+    }
+
     try {
       const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/cartitems`, {
         headers: {
           token: token
         }
       });
-      
       const cartCount = response.data.arr.length;
       setCart(cartCount);
-      // console.log("Cart items count: " + cart);
-  
     } catch (error: any) {
       console.error("Something went wrong while fetching cart items: " + error.message);
       setError(error.response?.data?.message || error.message);
     }
   };
-  useEffect(()=>{
-    cartlength()
-  },[cartlength])
 
-  
-  
+  useEffect(() => {
+    cartlength();
+  }, [isAuthenticated]);
 
   return (
     <AuthContext.Provider

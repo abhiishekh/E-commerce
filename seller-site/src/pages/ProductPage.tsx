@@ -39,7 +39,7 @@ const ProductPage = () => {
     try {
       setLoading(true);
       const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/product`);
-      console.log(response.data.response)
+      // console.log(response.data.response)
       if (response.data.response) {
         const userData = response.data.response;
         setProduct(response.data.response.length)
