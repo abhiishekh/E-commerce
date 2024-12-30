@@ -6,7 +6,6 @@ A fully functional e-commerce website built with **React**, **TypeScript**, **No
 
 Check out the live demo of the website: [Live Demo](https://shopping-chi-seven.vercel.app/)
 
-A fully functional e-commerce website built with ** React **, ** TypeScript **,** Node.js **,** Express **,** MongoDB **, and State Management. The website includes an Admin Panel for managing products, orders, and user data.
 
 
 # Technologies Used
