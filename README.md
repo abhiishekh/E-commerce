@@ -55,7 +55,7 @@ git clone https://github.com/yourusername/shopping-chi-7.git
 cd shopping-chi-7
 ```
 
-# Install Dependencies
+### 2. Install Dependencies
 First, install dependencies for both the frontend and backend:
 
 Frontend (React)
@@ -67,7 +67,7 @@ install the reqired Dependencies
 ```
 npm install
 ```
-### Backedn (nodejs + Express)
+Backedn (nodejs + Express)
 Navigate to the backend directory:
 ```
 cd full-toss-backend
@@ -76,7 +76,7 @@ install the required dependencied
 ```
 npm install
 ```
-# 3. Set Up Environment Variables
+### 3. Set Up Environment Variables
 Create a .env file in the root of both the frontend and backend directories to store environment variables.
 ## Frontend
 In the frontend/.env file, add the following variables:
@@ -91,8 +91,15 @@ JWT_SECRET=your-jwt-secret
 PORT=5000
 ```
 Make sure MongoDB is running locally or replace the MONGO_URI with your cloud MongoDB connection string.
+
 # Start the Development server
+#### Frontend
 ```
 npm run dev
 ```
+#### Backend
+```
+npm run dev
+```
+
 
