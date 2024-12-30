@@ -81,12 +81,12 @@ Create a .env file in the root of both the frontend and backend directories to s
 ## Frontend
 In the frontend/.env file, add the following variables:
 ```
-REACT_APP_API_URL=http://localhost:5000/api
+REACT_APP_API_URL=http://localhost:5000/api/v1
 ```
 ## Backend
 In the backend/.env file, add your MongoDB URI and JWT Secret:
 ```
-MONGO_URI=mongodb://localhost:27017/shopping-chi-7
+MONGO_URI=your_mongo_url
 JWT_SECRET=your-jwt-secret
 PORT=5000
 ```
